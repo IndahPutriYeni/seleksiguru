@@ -11,8 +11,8 @@
                 <th>Pendidikan</th>
                 <th>Kepribadian</th>
                 <th>Mengajar</th>
-                <th>Jumlah Eigen</th>
-                <th>Rata Eigen</th>
+                <th>Jumlah</th>
+                <th>Rata-rata</th>
             </tr>
         </thead>
         <tbody>

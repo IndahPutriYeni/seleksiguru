@@ -22,18 +22,20 @@ class CalonGuruController extends Controller
 
     public function editProfile(Request $request)
     {
+        // \dd($request);
         $validate = $request->validate([
-            'nik' => 'required|min:16|max:16',
-            'no_kk' => 'required|min:16|max:16',
-            'alamat' => 'nullable',
-            'current_password' => 'nullable|current_password',
-            'password' => 'nullable|min:8',
-            'tempat_lahir' => 'nullable',
-            'tanggal_lahir' => 'nullable|date',
-            'tamatan' => 'nullable',
-            'instansi' => 'nullable',
-            'no_hp' => 'nullable'
+            'nik' => 'required',
+            'no_kk' => 'required',
+            'tanggal_lahir' => 'date',
+            'no_hp' => 'nullable',
+            'foto_profile' => 'image'
         ]);
+        if($request->password){
+            $validate = $request->validate([   
+                'current_password' => 'current_password',
+                'password' => 'min:8',
+            ]);
+        }
         $dataGuru = CalonGuru::find(auth()->user()->id);
         $dataGuru->nik = $request->nik;
         $dataGuru->no_kk = $request->no_kk;
@@ -45,8 +47,8 @@ class CalonGuruController extends Controller
         $dataGuru->no_hp = $request->no_hp;
         if($request->hasFile('foto_profile'))
         {
-            $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
-            $storeImage = $request->foto_profile->move(public_path('images'), $imageName);
+            // $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
+            $storeImage = $request->foto_profile->store('public');
             $dataGuru->foto_profile = $storeImage;
         }
         $dataGuru->save();

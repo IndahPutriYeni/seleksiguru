@@ -14,17 +14,17 @@
     class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-slate-800">
     <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
       <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-          href="{{ route('index') }}"></a><button
+        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap text-white"
+          href="{{ route('index') }}">STIA BNM PARIAMAN</a><button
           class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-          type="button" onclick="toggleNavbar('example-collapse-navbar')">
-          <i class="text-white fas fa-bars"></i>
+          type="button" onclick="toggleNavbar('collapse-navbar')">
+          <i class="text-slate-700 fas fa-bars"></i>
         </button>
       </div>
       <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
         id="example-collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
-          @if (!empty(auth()))
+          @if (!auth()->check())
             <li class="inline-block relative">
               <a class="lg:text-white lg:hover:text-slate-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="{{ route('login') }}">
@@ -39,7 +39,7 @@
               </a>
             </li>
           @else
-            @if (!empty(auth()->user()->isAdmin) && auth()->user()->isAdmin == 1)
+            @if (auth()->user()->isAdmin)
               <li class="flex items-center">
                 <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
                   href="{{ route('admin.user') }}"><i

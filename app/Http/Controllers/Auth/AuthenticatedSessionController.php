@@ -31,10 +31,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        if(auth()->user()->isAdmin){
-            return redirect()->intended(route('admin.index'));
+        if($request->user()->isAdmin === 0){
+            return redirect()->intended(route('profile'));
         }
-        return redirect()->intended(route('profile'));
+        return redirect()->intended(route('admin.index'));
     }
 
     /**
