@@ -25,13 +25,9 @@ class CalonGuruController extends Controller
         $validate = $request->validate([
             'nik' => 'required|min:16|max:16',
             'no_kk' => 'required|min:16|max:16',
-            'alamat' => 'nullable',
-            'current_password' => 'nullable|current_password',
-            'password' => 'nullable|min:8',
-            'tempat_lahir' => 'nullable',
-            'tanggal_lahir' => 'nullable|date',
-            'tamatan' => 'nullable',
-            'instansi' => 'nullable',
+            'current_password' => 'current_password',
+            'password' => 'min:8',
+            'tanggal_lahir' => 'date',
             'no_hp' => 'nullable'
         ]);
         $dataGuru = CalonGuru::find(auth()->user()->id);

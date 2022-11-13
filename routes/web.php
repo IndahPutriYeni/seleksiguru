@@ -28,7 +28,7 @@ use App\Http\Controllers\CalonGuruController;
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 require __DIR__.'/auth.php';
-Route::middleware(['auth'])->controller(CalonGuruController::class)->group(function () {
+Route::middleware(['auth', 'guru'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/dashboard', 'profile')->name('profile');
     Route::post('/profile/edit', 'editProfile')->name('editProfile');
