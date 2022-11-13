@@ -50,7 +50,7 @@ class CalonGuruController extends Controller
             $dataGuru->foto_profile = $storeImage;
         }
         $dataGuru->save();
-            return redirect(route('surat'))->with('Success', 'Silahkan upload ijazah dan akta anda');
+            return redirect(route('profile'));
     }
 
     public function suratSurat()
