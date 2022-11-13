@@ -49,4 +49,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(CalonGuru::class);
     }
+
+    public function penilai()
+    {
+        return $this->where('jabatan', 'kepala_sekolah')->orWhere('jabatan', 'kepala_yayasan');
+    }
+
+    public function nilai_penilai()
+    {
+        return $this->hasMany(NilaiAlternatif::class, 'penilai_id');
+    }
+
+    public function nilai_guru()
+    {
+        return $this->hasMany(NilaiAlternatif::class, 'calon_guru_id');
+    }
 }

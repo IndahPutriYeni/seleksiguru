@@ -29,7 +29,7 @@ class AdminController extends Controller
             ->count();
         return view('Admin.user.index', compact('users', 'userCount'));
     }
-    
+
 
     public function addUser()
     {
@@ -79,9 +79,9 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         if($user){
-            $nilaiKriteria = NilaiKriteria::where('penilai_id', $id)->get();
+            $nilaiKriteria = NilaiAlternatif::where('penilai_id', $id)->get();
             if($nilaiKriteria){
-                return redirect(route('admin.user'))->withErrors('delete', 'Tidak bisa hapus user ini');
+                return redirect(route('admin.user'))->withErrors('delete', 'Tidak bisa hapus user ini karena sudah memberi penilaian');
             }
         }
     }

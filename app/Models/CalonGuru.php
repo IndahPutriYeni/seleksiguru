@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\SuratMenyurat;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CalonGuru extends Model
 {
@@ -23,4 +24,9 @@ class CalonGuru extends Model
     ];
 
     public $timestamps = false;
+
+    public function surat_menyurat()
+    {
+        return $this->hasMany(SuratMenyurat::class, 'user_id', 'id');
+    }
 }

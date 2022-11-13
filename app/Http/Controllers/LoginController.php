@@ -33,9 +33,9 @@ class LoginController extends Controller
         CalonGuru::create([
             'id' => $user->id
         ]);
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], true)){
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect(route('dataDiri'));
         }
     }
     public function authenticate(Request $request)
@@ -45,13 +45,24 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
  
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            if(auth()->user()->isAdmin){
+                return redirect(route('admin.index'));
+            }
+            return redirect(route('profile'));
         }
  
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

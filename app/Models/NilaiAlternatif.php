@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SuratMenyurat extends Model
+class NilaiAlternatif extends Model
 {
     use HasFactory;
-    protected $table = "surat_menyurat";
+    protected $table = "nilai_alternatif";
     protected $fillable = [
-        'user_id',
-        'type',
-        'image'
+        'calon_guru_id',
+        'penilai_id',
+        'kriteria_id',
+        'jabatan',
+        'nilai'
     ];
+
     public $timestamps = false;
 }
