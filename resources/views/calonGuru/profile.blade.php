@@ -31,7 +31,7 @@
                 </div>
               @endif
               <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form action="{{ route('editProfile') }}" method="POST" enctype="application/x-www-form-urlencoded">
+                <form action="{{ route('editProfile') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
                     User Information
@@ -39,7 +39,7 @@
                   <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Nama
                         </label>
                         <input type="text"
@@ -49,7 +49,7 @@
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Email
                         </label>
                         <input type="email"
@@ -59,7 +59,7 @@
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Password Lama
                         </label>
                         <input type="password"
@@ -69,7 +69,7 @@
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Password Baru
                         </label>
                         <input type="text"
@@ -87,51 +87,50 @@
                   <div class="flex">
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Tamatan
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          name="tamatan" required />
+                          name="tamatan" required value="{{ $dataGuru->tamatan }}" />
                       </div>
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Instansi
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          name="instansi" required />
+                          name="instansi" required value="{{ $dataGuru->instansi }}" />
                       </div>
                     </div>
                   </div>
                   <div class="flex">
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Tempat Lahir
                         </label>
-                        <input type="text"
-                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          name="tempat_lahir" required />
+                        <input type="text" class="border-0 px-3 py-3 placeholder-slate-500 text-slate"
+                          name="tempat_lahir" value="{{ $dataGuru->tempat_lahir }}" required />
                       </div>
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Tanggal Lahir
                         </label>
                         <input type="date"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          name="tanggal_lahir" required />
+                          name="tanggal_lahir" value="{{ $dataGuru->tanggal_lahir }}" required />
                       </div>
                     </div>
                   </div>
                   <div class="flex flex-wrap">
                     <div class="w-full px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Address
                         </label>
                         <textarea type="text" name="alamat" required
@@ -140,7 +139,7 @@
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           NIK
                         </label>
                         <input type="text" name="nik"
@@ -150,7 +149,7 @@
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           No KK
                         </label>
                         <input type="text"
@@ -160,12 +159,12 @@
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
                       <div class="relative w-full mb-3">
-                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           No HP
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->noHP }}" name="no_hp" required />
+                          value="{{ $dataGuru->no_hp }}" name="no_hp" required />
                       </div>
                     </div>
                   </div>

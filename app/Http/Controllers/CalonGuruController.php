@@ -22,27 +22,33 @@ class CalonGuruController extends Controller
 
     public function editProfile(Request $request)
     {
+        // \dd($request);
         $validate = $request->validate([
-            'nik' => 'required|min:16|max:16',
-            'no_kk' => 'required|min:16|max:16',
-            'current_password' => 'current_password',
-            'password' => 'min:8',
+            'nik' => 'required',
+            'no_kk' => 'required',
             'tanggal_lahir' => 'date',
-            'no_hp' => 'nullable'
+            'no_hp' => 'nullable',
+            'foto_profile' => 'image'
         ]);
+        if($request->password){
+            $validate = $request->validate([   
+                'current_password' => 'current_password',
+                'password' => 'min:8',
+            ]);
+        }
         $dataGuru = CalonGuru::find(auth()->user()->id);
         $dataGuru->nik = $request->nik;
-        $dataGuru->nik = $request->no_kk;
-        $dataGuru->nik = $request->alamat;
-        $dataGuru->nik = $request->tempat_lahir;
-        $dataGuru->nik = $request->tanggal_lahir;
-        $dataGuru->nik = $request->tamatan;
-        $dataGuru->nik = $request->instansi;
-        $dataGuru->nik = $request->no_hp;
+        $dataGuru->no_kk = $request->no_kk;
+        $dataGuru->alamat = $request->alamat;
+        $dataGuru->tempat_lahir = $request->tempat_lahir;
+        $dataGuru->tanggal_lahir = $request->tanggal_lahir;
+        $dataGuru->tamatan = $request->tamatan;
+        $dataGuru->instansi = $request->instansi;
+        $dataGuru->no_hp = $request->no_hp;
         if($request->hasFile('foto_profile'))
         {
-            $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
-            $storeImage = $request->foto_profile->move(public_path('images'), $imageName);
+            // $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
+            $storeImage = $request->foto_profile->store('public');
             $dataGuru->foto_profile = $storeImage;
         }
         $dataGuru->save();
