@@ -25,13 +25,13 @@ class CalonGuruController extends Controller
         $validate = $request->validate([
             'nik' => 'required|min:16|max:16',
             'no_kk' => 'required|min:16|max:16',
-            'alamat' => 'required',
+            'alamat' => 'nullable',
             'current_password' => 'nullable|current_password',
             'password' => 'nullable|min:8',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required|date',
-            'tamatan' => 'required',
-            'instansi' => 'required',
+            'tempat_lahir' => 'nullable',
+            'tanggal_lahir' => 'nullable|date',
+            'tamatan' => 'nullable',
+            'instansi' => 'nullable',
             'no_hp' => 'nullable'
         ]);
         $dataGuru = CalonGuru::find(auth()->user()->id);
@@ -55,8 +55,7 @@ class CalonGuruController extends Controller
 
     public function suratSurat()
     {
-        $suratsurat = SuratMenyurat::find(auth()->user()->id);
-
+        $suratsurat = SuratMenyurat::where('user_id', auth()->user()->id);
         return view('calonGuru.inputsurat', compact('suratsurat'));
     }
 

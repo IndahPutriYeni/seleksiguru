@@ -24,8 +24,8 @@ class MethodeController extends Controller
 
     public function copeland()
     {
-
+        
     }
 
-    
+
 }

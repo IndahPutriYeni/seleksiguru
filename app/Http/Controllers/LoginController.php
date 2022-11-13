@@ -7,6 +7,7 @@ use App\Models\CalonGuru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class LoginController extends Controller
 {
@@ -58,11 +59,19 @@ class LoginController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout(Request $request)
+    public function logout(Request $req)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
+        try {
+            $bearer_token = $req->bearerToken();
+            $token = PersonalAccessToken::findToken($bearer_token);
+            $token->delete();
+
+            return redirect('/');
+
+        } catch (Exception $e) {
+            return response([
+                'error' => $e->getMessage()
+            ], 400);
+        }
     }
 }

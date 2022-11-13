@@ -21,13 +21,13 @@ use App\Http\Controllers\CalonGuruController;
 
 
 
-Route::get('/login', [LoginController::class, 'show'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/register', [LoginController::class, 'registerPost']);
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::get('/login', [LoginController::class, 'show'])->name('login');
+// Route::post('/login', [LoginController::class, 'authenticate']);
+// Route::get('/register', [LoginController::class, 'register'])->name('register');
+// Route::post('/register', [LoginController::class, 'registerPost']);
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+require __DIR__.'/auth.php';
 Route::middleware(['auth'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
     Route::post('/profile/edit', 'editProfile')->name('editProfile');

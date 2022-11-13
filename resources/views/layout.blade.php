@@ -24,7 +24,7 @@
       <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
         id="example-collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
-          @if (!auth())
+          @if (!empty(auth()))
             <li class="inline-block relative">
               <a class="lg:text-white lg:hover:text-slate-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="{{ route('login') }}">
@@ -33,13 +33,13 @@
             </li>
             <li class="flex items-center">
               <a href="{{ route('register') }}"
-                class="bg-white text-white active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                class="bg-white text-slate-800 active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                 type="button">
                 <i class="fas fa-arrow-alt-circle-down"></i> Register
               </a>
             </li>
           @else
-            @if (auth()->user()->isAdmin)
+            @if (!empty(auth()->user()->isAdmin) && auth()->user()->isAdmin == 1)
               <li class="flex items-center">
                 <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
                   href="{{ route('admin.user') }}"><i
@@ -79,10 +79,13 @@
               </li>
             @endif
             <li class="flex items-center">
-              <a class="bg-white rounded hover:bg-slate-200 text-slate-700 lg:hover:text-indigo-600 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
-                href="{{ route('profile') }}"><i
-                  class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
-                Logout</a>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit"
+                  class="bg-white rounded hover:bg-slate-200 text-slate-700 lg:hover:text-indigo-600 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Logout</button>
+              </form>
             </li>
           @endif
         </ul>
