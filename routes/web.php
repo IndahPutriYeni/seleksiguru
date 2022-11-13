@@ -30,6 +30,7 @@ use App\Http\Controllers\CalonGuruController;
 require __DIR__.'/auth.php';
 Route::middleware(['auth'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
+    Route::get('/dashboard', 'profile')->name('profile');
     Route::post('/profile/edit', 'editProfile')->name('editProfile');
     Route::get('/surat-surat', 'suratSurat')->name('surat');
     Route::post('/surat-surat', 'uploadSurat');
