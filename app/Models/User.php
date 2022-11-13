@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function calon_guru()
     {
-        return $this->hasOne(CalonGuru::class);
+        return $this->hasOne(CalonGuru::class, 'id');
     }
 
     public function penilai()

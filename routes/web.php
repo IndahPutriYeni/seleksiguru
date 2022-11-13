@@ -60,7 +60,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 
     Route::controller(GuruController::class)->group(function(){
         Route::get('guru', 'listGuru')->name('guru.index');
-        Route::get('guru/{id}', 'showGuru')->name('guru.nilai');
+        Route::get('guru/nilai', 'addMassNilai')->name('guru.add.mass');
         Route::get('guru/{id}/surat', 'showSurat')->name('guru.surat');
         Route::post('guru/{id}', 'addNilai')->name('guru.addNilai');
         Route::put('guru/{id}', 'editGuru')->name('guru.edit');
