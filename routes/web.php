@@ -68,7 +68,9 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     });
 
     Route::controller(MethodeController::class)->group(function(){
-        Route::get('ahp', 'showAhp')->name('ahp');
+        Route::get('ahp', 'ahp')->name('ahp');
+        Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
+        Route::post('ahp', 'ahpProcess')->name('ahp.process');
         Route::get('topsis', 'showTopsis')->name('topsis');
         Route::get('copeland', 'showCopeland')->name('copeland');
     });

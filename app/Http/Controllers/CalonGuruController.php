@@ -36,13 +36,13 @@ class CalonGuruController extends Controller
         ]);
         $dataGuru = CalonGuru::find(auth()->user()->id);
         $dataGuru->nik = $request->nik;
-        $dataGuru->nik = $request->no_kk;
-        $dataGuru->nik = $request->alamat;
-        $dataGuru->nik = $request->tempat_lahir;
-        $dataGuru->nik = $request->tanggal_lahir;
-        $dataGuru->nik = $request->tamatan;
-        $dataGuru->nik = $request->instansi;
-        $dataGuru->nik = $request->no_hp;
+        $dataGuru->no_kk = $request->no_kk;
+        $dataGuru->alamat = $request->alamat;
+        $dataGuru->tempat_lahir = $request->tempat_lahir;
+        $dataGuru->tanggal_lahir = $request->tanggal_lahir;
+        $dataGuru->tamatan = $request->tamatan;
+        $dataGuru->instansi = $request->instansi;
+        $dataGuru->no_hp = $request->no_hp;
         if($request->hasFile('foto_profile'))
         {
             $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
