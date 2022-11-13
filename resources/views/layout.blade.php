@@ -11,7 +11,7 @@
 
 <body class="antialiased">
   <nav
-    class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-slate-800/50 backdrop-blur-md">
+    class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-slate-800">
     <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
       <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
         <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
@@ -24,19 +24,67 @@
       <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
         id="example-collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
-          <li class="inline-block relative">
-            <a class="lg:text-white lg:hover:text-slate-200 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="{{ route('login') }}">
-              Login
-            </a>
-          </li>
-          <li class="flex items-center">
-            <a href="{{ route('register') }}"
-              class="bg-white text-slate-700 active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-              type="button">
-              <i class="fas fa-arrow-alt-circle-down"></i> Register
-            </a>
-          </li>
+          @if (!auth())
+            <li class="inline-block relative">
+              <a class="lg:text-white lg:hover:text-slate-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="{{ route('login') }}">
+                Login
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a href="{{ route('register') }}"
+                class="bg-white text-white active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                type="button">
+                <i class="fas fa-arrow-alt-circle-down"></i> Register
+              </a>
+            </li>
+          @else
+            @if (auth()->user()->isAdmin)
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('admin.user') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  User</a>
+              </li>
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('admin.guru.index') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Guru</a>
+              </li>
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('admin.kategori') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Kategori</a>
+              </li>
+            @else
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('perjanjian') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Perjanjian</a>
+              </li>
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('surat') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Akta & Ijazah</a>
+              </li>
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('profile') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Profile</a>
+              </li>
+            @endif
+            <li class="flex items-center">
+              <a class="bg-white rounded hover:bg-slate-200 text-slate-700 lg:hover:text-indigo-600 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                href="{{ route('profile') }}"><i
+                  class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                Logout</a>
+            </li>
+          @endif
         </ul>
       </div>
     </div>
@@ -56,14 +104,16 @@
         </div>
         <div class="w-full md:w-8/12 px-4">
           <ul class="flex flex-wrap list-none md:justify-end justify-center">
-            <li>
-              <a href="{{ route('login') }}"
-                class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Login</a>
-            </li>
-            <li>
-              <a href="{{ route('register') }}"
-                class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Register</a>
-            </li>
+            @if (!auth())
+              <li>
+                <a href="{{ route('login') }}"
+                  class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Login</a>
+              </li>
+              <li>
+                <a href="{{ route('register') }}"
+                  class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Register</a>
+              </li>
+            @endif
           </ul>
         </div>
       </div>

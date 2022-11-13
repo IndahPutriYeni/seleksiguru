@@ -30,8 +30,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
-    Route::get('/profile/edit', 'editProfile')->name('editProfile');
-    Route::post('/profile/edit', 'postProfile');
+    Route::post('/profile/edit', 'editProfile')->name('editProfile');
     Route::get('/surat-surat', 'suratSurat')->name('surat');
     Route::post('/surat-surat', 'uploadSurat');
     Route::get('/data-diri', 'dataDiri')->name('dataDiri');
@@ -78,3 +77,6 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
+Route::get('/perjanjian', function () {
+    return view('calonGuru.perjanjian');
+})->name('perjanjian');
