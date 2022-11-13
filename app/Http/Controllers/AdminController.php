@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         $countUser = User::all()->count();
         $countGuru = CalonGuru::all()->count();
-        $coutKriteria = Kriteria::all()->count();
+        $countKriteria = Kriteria::all()->count();
         return view('Admin.index', compact('countUser', 'countGuru', 'countKriteria'));
     }
 
