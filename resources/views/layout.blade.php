@@ -5,39 +5,97 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
+  <link rel="stylesheet" src="{{ asset('vendor/@fortawesome/css/all.min.css') }}" />
   @vite('resources/css/app.css')
 </head>
 
 <body class="antialiased">
   <nav
-    class="flex justify-between items-center py-8 px-4 xl:px-10 shadow fixed w-full bg-white/75 backdrop-blur-sm top-0">
-    <a class="text-lg font-semibold text-indigo-500" href="#">
-      <span class="italic">SD IT</span> <span class="text-indigo-500">Daafa</span>
-    </a>
-    <div class="lg:hidden">
-      <button class="navbar-burger flex items-center p-3 hover:bg-gray-50 rounded">
-        <svg class="block h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <title>Mobile menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-        </svg>
-      </button>
+    class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-slate-800/50 backdrop-blur-md">
+    <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+          href="{{ route('index') }}">SD IT Daafa</a><button
+          class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+          type="button" onclick="toggleNavbar('example-collapse-navbar')">
+          <i class="text-white fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
+        id="example-collapse-navbar">
+        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
+          <li class="inline-block relative">
+            <a class="lg:text-white lg:hover:text-slate-200 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+              href="{{ route('login') }}">
+              Login
+            </a>
+          </li>
+          <li class="flex items-center">
+            <a href="{{ route('register') }}"
+              class="bg-white text-slate-700 active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              type="button">
+              <i class="fas fa-arrow-alt-circle-down"></i> Register
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <ul class="hidden lg:flex lg:ml-auto lg:mr-12 lg:items-center lg:w-auto lg:space-x-12">
-      <li><a class="text-sm font-medium" href="#about">About</a></li>
-      <li><a class="text-sm font-medium" href="#sekolah">Sekolah</a></li>
-    </ul>
-    <div class="hidden lg:block"><a
-        class="inline-block py-3 px-8 text-sm leading-normal font-medium bg-indigo-50 hover:bg-indigo-100 text-indigo-500 rounded transition duration-200"
-        href="{{ route('login') }}">Login</a></div>
   </nav>
-  <div class="container mx-auto mt-20">
-    @yield('content')
-  </div>
+  @yield('content')
   <hr class="border-b-1/2 border-gray-300 container mx-auto " />
-  <div class="flex container mx-auto justify-between my-10">
-    <span class="text-indigo-500">SD IT Daafa</span>
-    <span class="text-slate-700"> &copy; {{ now()->year }}</span>
-  </div>
+  <footer class=" w-full bg-slate-800 pb-6">
+    <div class="container mx-auto px-4">
+      <hr class="mb-6 border-b-1 border-slate-600" />
+      <div class="flex flex-wrap items-center md:justify-between justify-center">
+        <div class="w-full md:w-4/12 px-4">
+          <div class="text-sm text-white font-semibold py-1 text-center md:text-left">
+            Copyright © <span id="get-current-year"></span>
+            <a href="https://www.creative-tim.com?ref=njs-login"
+              class="text-white hover:text-slate-500 text-sm font-semibold py-1">SD IT Daafa</a>
+          </div>
+        </div>
+        <div class="w-full md:w-8/12 px-4">
+          <ul class="flex flex-wrap list-none md:justify-end justify-center">
+            <li>
+              <a href="{{ route('login') }}"
+                class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Login</a>
+            </li>
+            <li>
+              <a href="{{ route('register') }}"
+                class="text-white hover:text-slate-500 text-sm font-semibold block py-1 px-3">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+  <script>
+    /* Make dynamic date appear */
+    (function() {
+      if (document.getElementById("get-current-year")) {
+        document.getElementById("get-current-year").innerHTML =
+          new Date().getFullYear();
+      }
+    })();
+    /* Function for opning navbar on mobile */
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
+    /* Function for dropdowns */
+    function openDropdown(event, dropdownID) {
+      let element = event.target;
+      while (element.nodeName !== "A") {
+        element = element.parentNode;
+      }
+      Popper.createPopper(element, document.getElementById(dropdownID), {
+        placement: "bottom-start"
+      });
+      document.getElementById(dropdownID).classList.toggle("hidden");
+      document.getElementById(dropdownID).classList.toggle("block");
+    }
+  </script>
 </body>
 
 </html>

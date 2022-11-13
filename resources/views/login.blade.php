@@ -1,62 +1,50 @@
 @extends('layout')
 @section('title', 'Login System')
 @section('content')
-  <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 my-32">
-    <div class="w-full max-w-md space-y-8">
-      <div>
-        <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Your Company">
-        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
-          Belum punya akun?
-          <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Daftarkan diri
-            kamu</a>
-        </p>
+  <main>
+    <section class="relative w-full h-full py-40 min-h-screen">
+      <div class="absolute top-0 w-full h-full bg-slate-800 bg-full bg-no-repeat"
+        style="background-image: url({{ asset('images/register_bg_2.png') }}"></div>
+      <div class="container mx-auto px-4 h-full">
+        <div class="flex content-center items-center justify-center h-full">
+          <div class="w-full lg:w-4/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200 border-0">
+              <div class="flex-auto px-4 lg:px-10 py-10 pt-10">
+                <div class="text-slate-600 text-center mb-3 font-bold">
+                  <span class="text-orange-700 text-2xl">Masuk</span>
+                </div>
+                <form method="post" action="{{ route('login') }}">
+                  @csrf
+                  <div class="relative w-full mb-3">
+                    <label class="block uppercase text-slate-600 text-xs font-bold mb-2"
+                      for="grid-password">Email</label><input type="email" name="email"
+                      class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      placeholder="Email" />
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label class="block uppercase text-slate-600 text-xs font-bold mb-2"
+                      for="grid-password">Password</label><input type="password" name="password"
+                      class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      placeholder="Password" />
+                  </div>
+                  <div class="text-center mt-6">
+                    <button
+                      class="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      type="submit">
+                      Sign In
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="flex flex-wrap mt-6">
+              <div class="w-1/2 text-right">
+                <a href="{{ route('register') }}" class="text-slate-200"><small>Create new account</small></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
-        @csrf
-        <input type="hidden" name="remember" value="true">
-        <div class="-space-y-px rounded-md shadow-sm">
-          <div>
-            <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required
-              class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="Email address">
-          </div>
-          <div>
-            <label for="password" class="sr-only">Password</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required
-              class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="Password">
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-
-          </div>
-
-          <div class="text-sm">
-            <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Register</a>
-          </div>
-        </div>
-
-        <div>
-          <button type="submit"
-            class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-              <!-- Heroicon name: mini/lock-closed -->
-              <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                  clip-rule="evenodd" />
-              </svg>
-            </span>
-            Sign in
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+    </section>
+  </main>
 @endsection

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('tamatan')->nullable();
             $table->string('instansi')->nullable();
             $table->string('no_hp')->nullable();
-            $table->string('foto_profile')->default('public/images/profile.png');
+            $table->string('foto_profile')->default('images/profile.png');
         });
     }
 
