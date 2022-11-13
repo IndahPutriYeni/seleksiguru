@@ -26,12 +26,13 @@ class CalonGuruController extends Controller
             'nik' => 'required|min:16|max:16',
             'no_kk' => 'required|min:16|max:16',
             'alamat' => 'required',
+            'current_password' => 'nullable|current_password',
+            'password' => 'nullable|min:8',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'tamatan' => 'required',
             'instansi' => 'required',
-            'no_hp' => 'nullable',
-            'foto_profile' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'no_hp' => 'nullable'
         ]);
         $dataGuru = CalonGuru::find(auth()->user()->id);
         $dataGuru->nik = $request->nik;
@@ -49,19 +50,13 @@ class CalonGuruController extends Controller
             $dataGuru->foto_profile = $storeImage;
         }
         $dataGuru->save();
-
-        if(SuratMenyurat::where('user_id', auth()->user()->id)->get()->count())
-        {
-            return redirect(route('profile'))->with('Success', 'Silahkan cek kelengkapan surat ijazah dan akta kamu');
-        }else{
             return redirect(route('surat'))->with('Success', 'Silahkan upload ijazah dan akta anda');
-        }
     }
 
     public function suratSurat()
     {
         $suratsurat = SuratMenyurat::find(auth()->user()->id);
-        
+
         return view('calonGuru.inputsurat', compact('suratsurat'));
     }
 

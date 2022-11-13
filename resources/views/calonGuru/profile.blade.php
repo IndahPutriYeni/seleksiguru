@@ -22,15 +22,16 @@
                 </div>
               </div>
               @if ($errors->all())
-                <div class="w-full bg-red-200">
-
-                  @foreach ($errors->all('<li>:message</li>') as $error)
-                    {{ $error }}
-                  @endforeach
+                <div class="w-full bg-red-200 py-4">
+                  <ul class="text-red-500 list-disc mx-8">
+                    @foreach ($errors->all(':message') as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
                 </div>
               @endif
               <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form action="{{ route('editProfile') }}" method="POST">
+                <form action="{{ route('editProfile') }}" method="POST" enctype="application/x-www-form-urlencoded">
                   @csrf
                   <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
                     User Information
@@ -43,7 +44,7 @@
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->user->name }}" />
+                          value="{{ $dataGuru->user->name }}" required />
                       </div>
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
@@ -53,7 +54,7 @@
                         </label>
                         <input type="email"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->user->email }}" />
+                          value="{{ $dataGuru->user->email }}" required />
                       </div>
                     </div>
                     <div class="w-full lg:w-6/12 px-4">
@@ -83,13 +84,57 @@
                   <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
                     Tentang
                   </h6>
+                  <div class="flex">
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Tamatan
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="tamatan" required />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Instansi
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="instansi" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Tempat Lahir
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="tempat_lahir" required />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Tanggal Lahir
+                        </label>
+                        <input type="date"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="tanggal_lahir" required />
+                      </div>
+                    </div>
+                  </div>
                   <div class="flex flex-wrap">
                     <div class="w-full px-4">
                       <div class="relative w-full mb-3">
                         <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
                           Address
                         </label>
-                        <textarea type="text" name="alamat"
+                        <textarea type="text" name="alamat" required
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">{{ $dataGuru->alamat }}</textarea>
                       </div>
                     </div>
@@ -100,7 +145,7 @@
                         </label>
                         <input type="text" name="nik"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->nik }}" />
+                          value="{{ $dataGuru->nik }}" required />
                       </div>
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
@@ -110,7 +155,7 @@
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->no_kk }}" name="no_kk" />
+                          value="{{ $dataGuru->no_kk }}" name="no_kk" required />
                       </div>
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
@@ -120,7 +165,7 @@
                         </label>
                         <input type="text"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          value="{{ $dataGuru->noHP }}" name="no_hp" />
+                          value="{{ $dataGuru->noHP }}" name="no_hp" required />
                       </div>
                     </div>
                   </div>
