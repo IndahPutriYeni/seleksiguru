@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surat_menyurat', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('type');
-            $table->string('image');
+        //
+        Schema::create('kriteria_penilaian', function (Blueprint $table) {
+            $table->foreignId('kriteria_id_a')->constrained('kriteria');
+            $table->foreignId('kriteria_id_b')->constrained('kriteria');
+            $table->string('nilai');
         });
     }
 
@@ -27,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat_menyurat');
+        //
+        Schema::dropIfExists('kriteria_penilaian');
+
     }
 };

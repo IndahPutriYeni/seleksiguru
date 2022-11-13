@@ -29,6 +29,7 @@ class AdminController extends Controller
             ->count();
         return view('Admin.user.index', compact('users', 'userCount'));
     }
+    
 
     public function addUser()
     {

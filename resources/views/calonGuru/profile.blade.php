@@ -25,11 +25,13 @@
           </div>
           <div class="block mt-10 space-y-4">
             <span class="block font-bold text-indigo-400">NIK</span>
-            @if ($dataGuru->nik)
-              <span class="font-sans text-3xl text-slate-500">{{ $dataGuru->nik ?: '' }}</span>
-            @else
-              <span class="text-2xl text-slate-300">Anda belum mengisi NIK</span>
-            @endif
+            <span
+              class="font-sans {{ $dataGuru->nik ? ' text-3xl text-slate-500' : ' text-2xl text-slate-300' }}">{{ $dataGuru->nik ?: 'And belum isi NIK' }}</span>
+          </div>
+          <div class="block mt-10 space-y-4">
+            <span class="block font-bold text-indigo-400">No. Kartu Keluarga</span>
+            <span
+              class="font-sans {{ $dataGuru->no_kk ? ' text-3xl text-slate-500' : ' text-2xl text-slate-300' }}">{{ $dataGuru->no_kk ?: 'And belum isi No KK' }}</span>
           </div>
         </div>
       </div>

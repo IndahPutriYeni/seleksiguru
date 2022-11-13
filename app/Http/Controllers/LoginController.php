@@ -31,7 +31,7 @@ class LoginController extends Controller
             'password' => Hash::make($request->password)
         ]);
         CalonGuru::create([
-            'users' => $user
+            'id' => $user->id
         ]);
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $request->session()->regenerate();
