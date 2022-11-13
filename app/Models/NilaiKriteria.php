@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class NilaiKriteria extends Model
 {
     use HasFactory;
-    protected $table = 'kriteria_penilaian';
+    protected $table = 'nilai_kriteria';
     protected $fillable = [
-        'kriteria_id_a',
-        'kriteria_id_b',
+        'kode',
+        'tipe',
         'nilai'
     ];
-
-    public $timestamps = false;
 }
