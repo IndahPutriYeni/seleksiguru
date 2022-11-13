@@ -3,76 +3,189 @@
 @section('content')
 
   <main class="profile-page">
-    <section class="container mx-auto">
-      <img class="w-full h-full bg-center bg-cover"
-        src="https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80'">
-      </img>
-      <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-        style="transform: translateZ(0px)">
-        <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-          version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-          <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
+    <div class="bg-slate-50">
+      <div class=" absolute -mb-10 w-full container bg-green-600 md:pt-32 pb-32 pt-12">
+        <div class="px-4 md:px-10 mx-auto w-full">
+          <div>
+          </div>
+        </div>
       </div>
-    </section>
-    <section class="container mx-auto z-10 -mt-16 lg:mt-4s">
-      <div class="flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg">
-        <div class="px-6">
-          <div class="flex flex-wrap justify-between">
-            <div class="px-4 flex justify-between">
-              <div class="absolute">
-                <img alt="..." src="{{ asset($dataGuru->foto_profile) }}"
-                  class="shadow-xl rounded-full h-auto align-middle border-none w-32 h-32" />
+      <div class="px-4 md:px-10 mx-auto w-full pt-10">
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-8/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-100 border-0">
+              <div class="rounded-t bg-white mb-0 px-6 py-6">
+                <div class="text-center flex justify-between">
+                  <h6 class="text-slate-700 text-xl font-bold">
+                    My account
+                  </h6>
+                </div>
               </div>
-            </div>
-            <div class="px-4 lg:order-3 lg:text-right lg:self-center">
-              <div class="py-6 px-3 mt-32 sm:mt-0">
-                <button
-                  class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                  type="button">
-                  Edit
-                </button>
+              @if ($errors->all())
+                <div class="w-full bg-red-200">
+
+                  @foreach ($errors->all('<li>:message</li>') as $error)
+                    {{ $error }}
+                  @endforeach
+                </div>
+              @endif
+              <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <form action="{{ route('editProfile') }}" method="POST">
+                  @csrf
+                  <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
+                    User Information
+                  </h6>
+                  <div class="flex flex-wrap">
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Nama
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          value="{{ $dataGuru->user->name }}" />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Email
+                        </label>
+                        <input type="email"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          value="{{ $dataGuru->user->email }}" />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Password Lama
+                        </label>
+                        <input type="password"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="current_password" />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-6/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Password Baru
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="password" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="mt-6 border-b-1 border-slate-500" />
+
+                  <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
+                    Tentang
+                  </h6>
+                  <div class="flex flex-wrap">
+                    <div class="w-full px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          Address
+                        </label>
+                        <textarea type="text" name="alamat"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">{{ $dataGuru->alamat }}</textarea>
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-4/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          NIK
+                        </label>
+                        <input type="text" name="nik"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          value="{{ $dataGuru->nik }}" />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-4/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          No KK
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          value="{{ $dataGuru->no_kk }}" name="no_kk" />
+                      </div>
+                    </div>
+                    <div class="w-full lg:w-4/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                          No HP
+                        </label>
+                        <input type="text"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          value="{{ $dataGuru->noHP }}" name="no_hp" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="mt-6 border-b-1 border-slate-500" />
+
+                  <h6 class="text-slate-600 text-sm mt-3 mb-6 font-bold uppercase">
+                    Foto
+                  </h6>
+                  <div class="flex flex-wrap">
+                    <div class="w-full lg:w-12/12 px-4">
+                      <div class="relative w-full mb-3">
+                        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" for="foto_profile">
+                          Foto Profile
+                        </label>
+                        <input type="file"
+                          class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          name="foto_profile" id="foto_profile" />
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="w-full mt-8 bg-green-500 text-white active:bg-green-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="submit">
+                    Simpan Data
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-          <div class="lg:text-center mt-12">
-            <h3 class="text-4xl font-semibold leading-normal mb-2 text-slate-700 mb-2">
-              {{-- {{ dd($dataGuru->user->name) }} --}}
-              {{ $dataGuru->user->name }}
-            </h3>
-            <div class="text-sm leading-normal mt-0 mb-2 font-bold">
-              <i
-                class="fas fa-map-marker-alt mr-2 text-lg  {{ $dataGuru->nik ? 'text-slate-600' : 'text-slate-400' }}"></i>
-              NIK : {{ $dataGuru->nik ?: 'Anda Belum Memasukkan NIK' }}
-            </div>
-            <div
-              class="text-sm leading-normal mt-0 mb-2 font-bold {{ $dataGuru->no_kk ? 'text-slate-600' : 'text-slate-400' }}">
-              <i class="fas fa-map-marker-alt mr-2 text-lg"></i>
-              No KK : {{ $dataGuru->no_kk ?: 'Anda Belum Memasukkan No KK' }}
-            </div>
-            <div class="mb-2 text-slate-600 mt-10">
-              <i class="fas fa-briefcase mr-2 text-lg text-slate-600"></i>Solution Manager - Creative Tim Officer
-            </div>
-            <div class="mb-2 text-slate-600">
-              <i class="fas fa-university mr-2 text-lg text-slate-600"></i>University of Computer Science
-            </div>
-          </div>
-          <div class="mt-10 py-10 border-t border-slate-200 text-center">
-            <div class="flex flex-wrap justify-center">
-              <div class="w-full lg:w-9/12 px-4">
-                <p class="mb-4 text-lg leading-relaxed text-slate-700">
-                  An artist of considerable range, Jenna the name taken by
-                  Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                  performs and records all of his own music, giving it a
-                  warm, intimate feel with a solid groove structure. An
-                  artist of considerable range.
-                </p>
-                <a href="#pablo" class="font-normal text-pink-500">Show more</a>
+          <div class="w-full lg:w-4/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+              <div class="px-6">
+                <div class="flex flex-wrap justify-center">
+                  <div class="w-full px-4 flex justify-center">
+                    <img alt="..." src="{{ asset($dataGuru->foto_profile) }}"
+                      class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 w-24 h-24" />
+                  </div>
+                </div>
+                <div class="text-center my-12">
+                  <h3 class="text-xl font-semibold leading-normal mb-2 text-slate-700 mb-2">
+                    {{ $dataGuru->user->name }}
+                  </h3>
+                  <div class="text-sm leading-normal mt-0 mb-2 text-slate-600 font-bold">
+                    <i class="fas fa-envelope mr-2 text-lg text-slate-600"></i>
+                    {{ $dataGuru->user->email }}
+                  </div>
+                  <div class="text-sm leading-normal mt-0 mb-2 text-slate-600 font-bold">
+                    <i class="fas fa-map-marker-alt mr-2 text-lg text-slate-600"></i>
+                    {{ $dataGuru->alamat }}
+                  </div>
+                  <div class="mb-2 text-slate-600 mt-10">
+                    <i class="fas fa-briefcase mr-2 text-lg text-slate-600"></i>
+                    {{ $dataGuru->instansi }} - {{ $dataGuru->tamatan }}
+                  </div>
+                  <div class="mb-2 text-slate-600">
+                    <i class="fas fa-id-card mr-2 text-lg text-slate-600"></i>
+                    NIK : {{ $dataGuru->nik }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 @endsection

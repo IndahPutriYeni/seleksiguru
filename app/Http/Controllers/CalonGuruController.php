@@ -14,13 +14,13 @@ class CalonGuruController extends Controller
         return view('calonGuru.profile', compact('dataGuru'));
     }
 
-    public function editProfile()
+    public function dataDiri()
     {
         $dataGuru = CalonGuru::find(auth()->user()->id);
         return view('calonGuru.datadiri', compact('dataGuru'));
     }
 
-    public function postProfile(Request $request)
+    public function editProfile(Request $request)
     {
         $validate = $request->validate([
             'nik' => 'required|min:16|max:16',
