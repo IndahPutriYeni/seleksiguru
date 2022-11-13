@@ -16,7 +16,7 @@
     <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
       <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
         <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap text-indigo-700"
-          href="{{ route('index') }}">SD IT Daafa</a><button
+          href="{{ route('index') }}">STIA BNM PARIAMAN</a><button
           class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
           type="button" onclick="toggleNavbar('collapse-navbar')">
           <i class="text-slate-700 fas fa-bars"></i>
@@ -34,13 +34,19 @@
             <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
               href="{{ route('surat') }}"><i
                 class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
-              Akta & Ijazah</a>
+              Surat-surat</a>
           </li>
           <li class="flex items-center">
             <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
               href="{{ route('profile') }}"><i
                 class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
               Profile</a>
+          </li>
+          <li class="flex items-center">
+            <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+              href="{{ route('profile-sekolah') }}"><i
+                class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+              Profile Sekolah</a>
           </li>
         </ul>
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
