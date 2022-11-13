@@ -36,6 +36,7 @@ Route::middleware(['auth'])->controller(CalonGuruController::class)->group(funct
     Route::post('/surat-surat', 'uploadSurat');
     Route::get('/data-diri', 'dataDiri')->name('dataDiri');
     Route::post('/data-diri', 'postDataDiri');
+    Route::get('/profil-sekolah', 'profileSekolah')->name('profile-sekolah');
 });
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
