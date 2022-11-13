@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\CalonGuru;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
@@ -34,7 +36,7 @@ class UserSeeder extends Seeder
             'isAdmin' => 0
         ]);
         CalonGuru::insert([
-            'id' => 1,
+            'id' => 2,
             'nik' => '1324240505950001',
             'no_kk' => '1324240505950032',
             'alamat' => 'Pasar Baru. Kec Pauh, Kota Padang, Sumatera Barat',
