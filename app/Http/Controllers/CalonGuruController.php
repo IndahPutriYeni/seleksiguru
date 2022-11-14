@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalonGuru;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\SuratMenyurat;
+
+use Illuminate\Support\Facades\Hash;
 
 class CalonGuruController extends Controller
 {
@@ -30,12 +33,20 @@ class CalonGuruController extends Controller
             'no_hp' => 'nullable',
             'foto_profile' => 'image'
         ]);
+        $dataUser = User::find(auth()->user()->id);
+        $dataUser->email = $request->email;
+        $dataUser->name = $request->name;
         if($request->password){
             $validate = $request->validate([   
                 'current_password' => 'current_password',
                 'password' => 'min:8',
             ]);
+            if($validate){
+                $dataUser->password = Hash::make($request->password);
+            }
         }
+        $dataUser->save();
+
         $dataGuru = CalonGuru::find(auth()->user()->id);
         $dataGuru->nik = $request->nik;
         $dataGuru->no_kk = $request->no_kk;
@@ -47,12 +58,13 @@ class CalonGuruController extends Controller
         $dataGuru->no_hp = $request->no_hp;
         if($request->hasFile('foto_profile'))
         {
-            // $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
-            $storeImage = $request->foto_profile->store('public');
-            $dataGuru->foto_profile = $storeImage;
+            $imageName = 'userID-'.auth()->user()->id.'-'.time().'.'.$request->foto_profile->extension();
+            $storeImage = $request->foto_profile->move(public_path('images'), $imageName);
+            $dataGuru->foto_profile = 'images/'.$imageName;
         }
         $dataGuru->save();
-            return redirect(route('profile'))->withSuccess('Sukses upload surat menyurat anda');;
+            return redirect(route('profile'))->withSuccess('Berhasil Menyimpan Data Anda ');
+
     }
 
     public function suratSurat()
