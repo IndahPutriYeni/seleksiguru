@@ -40,16 +40,16 @@
               @foreach ($kriteria as $cat)
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_yayasan')
-                    {{-- {{ dd($person->nilai_guru->where('kriteria_id', $cat->id)->first()->nilai) }} --}}
                     @php
                       $nilai = $person->nilai_guru->where('kriteria_id', $cat->id)->first();
-                      // dd($nilai->nilai);
                     @endphp
                     <input type="number" class="border-gray-400 rounded" name="{{ $cat->id }}"
                       value="{{ $nilai ? $nilai->nilai : '0' }}" />
                   @else
-                    {{-- {{ dd($person->nilai_guru->where('kriteria_id', $cat->id)->first()) }} --}}
-                    {{ $person->nilai_guru->where('kriteria_id', $cat->id)->first() ?: '0' }}
+                    @php
+                      $nilai = $person->nilai_guru->where('kriteria_id', $cat->id)->first();
+                    @endphp
+                    {{ $nilai ? $nilai->nilai : '0' }}
                   @endif
                 </td>
               @endforeach
