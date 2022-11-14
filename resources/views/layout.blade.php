@@ -7,6 +7,7 @@
   <title>@yield('title')</title>
   <link rel="stylesheet" src="{{ asset('vendor/@fortawesome/css/all.min.css') }}" />
   @vite('resources/css/app.css')
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="antialiased">

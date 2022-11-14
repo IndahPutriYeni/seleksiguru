@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
   <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/css/all.min.css') }}" />
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @vite('resources/css/app.css')
 </head>
 
