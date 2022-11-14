@@ -1,6 +1,7 @@
 @extends('Admin.layout')
 @section('title', 'Admin')
 @section('content')
+  {{-- {{ dd(auth()->user()) }} --}}
   <div class="bg-gray-100 ml-64 p-8">
     <h1>Input Nilai Calon Guru</h1>
     <div class="bg-white">
@@ -35,15 +36,21 @@
               </th>
               @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_sekolah')
                 <form method="POST" action="{{ route('admin.guru.addNilai', $person->id) }}">
+                  @csrf
               @endif
               @foreach ($kriteria as $cat)
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_sekolah')
-                    <input type="number" class="border-gray-400 rounded"
-                      name="nilai[{{ $person->id }}][{{ $cat->id }}]"
-                      value="{{ $person->nilai_guru->where('kriteria_id', $cat->id)->first() ? '' : '0' }}" />
+                    {{-- {{ dd($person->nilai_guru->where('kriteria_id', $cat->id)->first()->nilai) }} --}}
+                    @php
+                      $nilai = $person->nilai_guru->where('kriteria_id', $cat->id)->first();
+                      // dd($nilai->nilai);
+                    @endphp
+                    <input type="number" class="border-gray-400 rounded" name="{{ $cat->id }}"
+                      value="{{ $nilai ? $nilai->nilai : '0' }}" />
                   @else
-                    {{ $person->nilai_guru->where('kriteria_id', $cat->id)->first() ? '' : '0' }}
+                    {{-- {{ dd($person->nilai_guru->where('kriteria_id', $cat->id)->first()) }} --}}
+                    {{ $person->nilai_guru->where('kriteria_id', $cat->id)->first() ?: '0' }}
                   @endif
                 </td>
               @endforeach

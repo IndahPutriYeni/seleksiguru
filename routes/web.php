@@ -34,8 +34,6 @@ Route::middleware(['auth', 'guru'])->controller(CalonGuruController::class)->gro
     Route::post('/profile/edit', 'editProfile')->name('editProfile');
     Route::get('/surat-surat', 'suratSurat')->name('surat');
     Route::post('/surat-surat', 'uploadSurat');
-    Route::get('/data-diri', 'dataDiri')->name('dataDiri');
-    Route::post('/data-diri', 'postDataDiri');
     Route::get('/profil-sekolah', 'profileSekolah')->name('profile-sekolah');
 });
 

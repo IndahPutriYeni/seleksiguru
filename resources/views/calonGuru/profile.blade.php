@@ -96,9 +96,18 @@
                         <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Tamatan
                         </label>
-                        <input type="text"
+                        <select
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          name="tamatan" required value="{{ $dataGuru->tamatan }}" />
+                          name="tamatan" required>
+                          <option value="SMA" @if ($dataGuru->tamatan == 'SMA') selected @endif>SMA/MA/SMK</option>
+                          <option value="D1" @if ($dataGuru->tamatan == 'D1') selected @endif>D1</option>
+                          <option value="D2" @if ($dataGuru->tamatan == 'D2') selected @endif>D2</option>
+                          <option value="D3" @if ($dataGuru->tamatan == 'D3') selected @endif>D3</option>
+                          <option value="D4" @if ($dataGuru->tamatan == 'D4') selected @endif>D4</option>
+                          <option value="S1" @if ($dataGuru->tamatan == 'S1') selected @endif>S1</option>
+                          <option value="S2" @if ($dataGuru->tamatan == 'S2') selected @endif>S2</option>
+                          <option value="S3" @if ($dataGuru->tamatan == 'S3') selected @endif>S3</option>
+                        </select>
                       </div>
                     </div>
                     <div class="w-full lg:w-6/12 px-4">

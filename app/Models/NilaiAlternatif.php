@@ -17,5 +17,9 @@ class NilaiAlternatif extends Model
         'nilai'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'calon_guru_id');
+    }
     public $timestamps = false;
 }

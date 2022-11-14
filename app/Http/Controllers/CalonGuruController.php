@@ -64,6 +64,7 @@ class CalonGuruController extends Controller
         }
         $dataGuru->save();
             return redirect(route('profile'))->withSuccess('Berhasil Menyimpan Data Anda ');
+
     }
 
     public function suratSurat()
