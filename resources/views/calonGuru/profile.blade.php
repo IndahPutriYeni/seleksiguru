@@ -21,6 +21,12 @@
                   </h6>
                 </div>
               </div>
+              @if(session()->has('success'))
+        <div class="bg-green-400 mx-5 px-3 py-2 text-white tracking-wider rounded-lg">
+            <span class="font-semibold">Berhasil</span>
+            <span class="text-base">{{session()->get('success')}}</span>
+        </div>
+        @endif
               @if ($errors->all())
                 <div class="w-full bg-red-200 py-4">
                   <ul class="text-red-500 list-disc mx-8">
@@ -42,7 +48,7 @@
                         <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Nama
                         </label>
-                        <input type="text"
+                        <input type="text" name="name"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           value="{{ $dataGuru->user->name }}" required />
                       </div>
@@ -52,7 +58,7 @@
                         <label class="block uppercase text-slate-600 text-xs font-bold mb-2">
                           Email
                         </label>
-                        <input type="email"
+                        <input type="email" name="email"
                           class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           value="{{ $dataGuru->user->email }}" required />
                       </div>
@@ -204,8 +210,8 @@
                       class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 w-24 h-24" />
                   </div>
                 </div>
-                <div class="text-center my-12">
-                  <h3 class="text-xl font-semibold leading-normal mb-2 text-slate-700 mb-2">
+                <div class="my-12">
+                  <h3 class="text-xl font-semibold leading-normal mb-2 text-slate-700 mb-2text-center">
                     {{ $dataGuru->user->name }}
                   </h3>
                   <div class="text-sm leading-normal mt-0 mb-2 text-slate-600 font-bold">
