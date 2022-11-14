@@ -25,7 +25,7 @@ class GuruController extends Controller
         $kriteria = Kriteria::all();
 
         foreach($kriteria as $cat){
-            NilaiAlternatif::where(condition);
+            // NilaiAlternatif::where(condition);
             NilaiAlternatif::updateOrCreate([
                 'calon_guru_id' => $request->id,
                 'penilai_id' => auth()->user()->id,
