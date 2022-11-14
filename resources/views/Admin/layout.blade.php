@@ -114,6 +114,7 @@
         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
           <li class="items-center">
             <form method="POST" action="{{ route('logout') }}">
+              @csrf
               <button type="submit" class="text-slate-700 hover:text-red-500 text-xs uppercase py-3 font-bold block">
                 <i class="fas fa-door-open text-slate-500 mr-2 text-sm"></i>
                 Logout

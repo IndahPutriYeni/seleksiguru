@@ -48,131 +48,131 @@ class DatabaseSeeder extends Seeder
             'bobot_topsis' => '0.42'
         ]);
 
-        NilaiKriteria::create([
-            'kriteria_id_a' => '1',
-            'kriteria_id_b' => '1',
-            'nilai' => '1'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '1',
-            'kriteria_id_b' => '2',
-            'nilai' => '0.5'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '1',
-            'kriteria_id_b' => '3',
-            'nilai' => '0.5'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '1',
-            'kriteria_id_b' => '4',
-            'nilai' => '0.5'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '1',
-            'kriteria_id_b' => '5',
-            'nilai' => '0.33'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '2',
-            'kriteria_id_b' => '1',
-            'nilai' => '2'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '2',
-            'kriteria_id_b' => '2',
-            'nilai' => '1'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '2',
-            'kriteria_id_b' => '3',
-            'nilai' => '0.5'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '2',
-            'kriteria_id_b' => '4',
-            'nilai' => '0.33'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '2',
-            'kriteria_id_b' => '5',
-            'nilai' => '0.33'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '3',
-            'kriteria_id_b' => '1',
-            'nilai' => '2'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '3',
-            'kriteria_id_b' => '2',
-            'nilai' => '2'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '3',
-            'kriteria_id_b' => '3',
-            'nilai' => '1'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '3',
-            'kriteria_id_b' => '4',
-            'nilai' => '0.5'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '3',
-            'kriteria_id_b' => '5',
-            'nilai' => '0.33'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '4',
-            'kriteria_id_b' => '1',
-            'nilai' => '2'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '4',
-            'kriteria_id_b' => '2',
-            'nilai' => '3'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '4',
-            'kriteria_id_b' => '3',
-            'nilai' => '2'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '4',
-            'kriteria_id_b' => '4',
-            'nilai' => '1'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '4',
-            'kriteria_id_b' => '5',
-            'nilai' => '0.25'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '5',
-            'kriteria_id_b' => '1',
-            'nilai' => '3'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '5',
-            'kriteria_id_b' => '2',
-            'nilai' => '3'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '5',
-            'kriteria_id_b' => '3',
-            'nilai' => '3'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '5',
-            'kriteria_id_b' => '4',
-            'nilai' => '4'
-        ]);
-        NilaiKriteria::create([
-            'kriteria_id_a' => '5',
-            'kriteria_id_b' => '5',
-            'nilai' => '1'
-        ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '1',
+        //     'kriteria_id_b' => '1',
+        //     'nilai' => '1'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '1',
+        //     'kriteria_id_b' => '2',
+        //     'nilai' => '0.5'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '1',
+        //     'kriteria_id_b' => '3',
+        //     'nilai' => '0.5'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '1',
+        //     'kriteria_id_b' => '4',
+        //     'nilai' => '0.5'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '1',
+        //     'kriteria_id_b' => '5',
+        //     'nilai' => '0.33'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '2',
+        //     'kriteria_id_b' => '1',
+        //     'nilai' => '2'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '2',
+        //     'kriteria_id_b' => '2',
+        //     'nilai' => '1'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '2',
+        //     'kriteria_id_b' => '3',
+        //     'nilai' => '0.5'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '2',
+        //     'kriteria_id_b' => '4',
+        //     'nilai' => '0.33'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '2',
+        //     'kriteria_id_b' => '5',
+        //     'nilai' => '0.33'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '3',
+        //     'kriteria_id_b' => '1',
+        //     'nilai' => '2'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '3',
+        //     'kriteria_id_b' => '2',
+        //     'nilai' => '2'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '3',
+        //     'kriteria_id_b' => '3',
+        //     'nilai' => '1'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '3',
+        //     'kriteria_id_b' => '4',
+        //     'nilai' => '0.5'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '3',
+        //     'kriteria_id_b' => '5',
+        //     'nilai' => '0.33'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '4',
+        //     'kriteria_id_b' => '1',
+        //     'nilai' => '2'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '4',
+        //     'kriteria_id_b' => '2',
+        //     'nilai' => '3'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '4',
+        //     'kriteria_id_b' => '3',
+        //     'nilai' => '2'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '4',
+        //     'kriteria_id_b' => '4',
+        //     'nilai' => '1'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '4',
+        //     'kriteria_id_b' => '5',
+        //     'nilai' => '0.25'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '5',
+        //     'kriteria_id_b' => '1',
+        //     'nilai' => '3'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '5',
+        //     'kriteria_id_b' => '2',
+        //     'nilai' => '3'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '5',
+        //     'kriteria_id_b' => '3',
+        //     'nilai' => '3'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '5',
+        //     'kriteria_id_b' => '4',
+        //     'nilai' => '4'
+        // ]);
+        // NilaiKriteria::create([
+        //     'kriteria_id_a' => '5',
+        //     'kriteria_id_b' => '5',
+        //     'nilai' => '1'
+        // ]);
         $this->call([
             UserSeeder::class
         ]);

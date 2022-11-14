@@ -22,7 +22,6 @@
         </thead>
         <tbody>
           @foreach ($guru as $person)
-            {{-- {{ dd($person->calon_guru) }} --}}
             <tr>
               <th
                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
@@ -34,13 +33,13 @@
                   </span>
                 </a>
               </th>
-              @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_sekolah')
+              @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_yayasan')
                 <form method="POST" action="{{ route('admin.guru.addNilai', $person->id) }}">
                   @csrf
               @endif
               @foreach ($kriteria as $cat)
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_sekolah')
+                  @if (auth()->user()->jabatan === 'kepala_sekolah' || auth()->user()->jabatan === 'kepala_yayasan')
                     {{-- {{ dd($person->nilai_guru->where('kriteria_id', $cat->id)->first()->nilai) }} --}}
                     @php
                       $nilai = $person->nilai_guru->where('kriteria_id', $cat->id)->first();

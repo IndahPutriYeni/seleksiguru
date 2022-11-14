@@ -17,11 +17,6 @@ class CalonGuruController extends Controller
         return view('calonGuru.profile', compact('dataGuru'));
     }
 
-    public function dataDiri()
-    {
-        $dataGuru = CalonGuru::find(auth()->user()->id);
-        return view('calonGuru.datadiri', compact('dataGuru'));
-    }
 
     public function editProfile(Request $request)
     {
