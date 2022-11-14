@@ -105,6 +105,22 @@
           </li>
         </ul>
 
+        <!-- Divider -->
+        <hr class="my-4 md:min-w-full" />
+        <!-- Heading -->
+        <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
+          Kepala Yayasan
+        </h6>
+        <!-- Navigation -->
+        <ul>
+          <li class="items-center">
+            <a href="{{ route('admin.kepalaYayasan.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
+              AHP
+            </a>
+          </li>
+        </ul>
+
         <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
         <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">

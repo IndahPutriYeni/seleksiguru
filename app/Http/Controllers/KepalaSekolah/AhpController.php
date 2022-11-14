@@ -11,6 +11,7 @@ class AhpController extends Controller
 {
     public function ahp()
     {
+        $postUrl = route('admin.kepalaSekolah.ahp.process');
         $kriteria = [
             'tahfiz_pengalaman' => ['Tahfiz', 'Pengalaman'],
 
@@ -27,7 +28,7 @@ class AhpController extends Controller
             'mengajar_kepribadian' => ['Mengajar', 'Kepribadian'],
         ];
 
-        return view('Admin.methode.ahp', compact('kriteria'));
+        return view('Admin.methode.ahp', compact('kriteria', 'postUrl'));
     }
 
     public function ahpPerbandingan()
@@ -43,7 +44,7 @@ class AhpController extends Controller
 
     public function ahpProcess(Request $request)
     {
-        $data = AhpService::process($request);
+        $data = AhpService::processKepalaSekolah($request);
 
         foreach ($data as $kode => $nilai) {
             NilaiKriteria::updateOrCreate(['kode' => $kode, 'tipe' => 'kepala_sekolah'], ['nilai' => $nilai]);

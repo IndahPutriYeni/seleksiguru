@@ -20,7 +20,7 @@ class AhpService
         '10' => 1.49,
     ];
 
-    public static function process(Request $request)
+    public static function processKepalaSekolah(Request $request)
     {
         $pengalaman_pengalaman = 1;
         $tahfiz_tahfiz = 1;
@@ -56,6 +56,49 @@ class AhpService
             'mengajar_pengalaman' => $request->mengajar_pengalaman,
             'mengajar_tahfiz' => $request->mengajar_tahfiz,
             'mengajar_pendidikan' => $request->mengajar_pendidikan,
+            'mengajar_kepribadian' => $request->mengajar_kepribadian,
+            'mengajar_mengajar' => $mengajar_mengajar,
+        ];
+
+        return $data;
+    }
+
+    public static function processKepalaYayasan(Request $request)
+    {
+        $pengalaman_pengalaman = 1;
+        $tahfiz_tahfiz = 1;
+        $pendidikan_pendidikan = 1;
+        $kepribadian_kepribadian = 1;
+        $mengajar_mengajar = 1;
+
+        $data = [
+            'pengalaman_pengalaman' => $pengalaman_pengalaman,
+            'pengalaman_tahfiz' => $pengalaman_pengalaman / $request->tahfiz_pengalaman,
+            'pengalaman_pendidikan' => $pengalaman_pengalaman / $request->pendidikan_pengalaman,
+            'pengalaman_kepribadian' => $pengalaman_pengalaman / $request->kepribadian_pengalaman,
+            'pengalaman_mengajar' => $pengalaman_pengalaman / $request->mengajar_pengalaman,
+
+            'tahfiz_pengalaman' => $request->tahfiz_pengalaman,
+            'tahfiz_tahfiz' => $tahfiz_tahfiz,
+            'tahfiz_pendidikan' => $request->tahfiz_pendidikan,
+            'tahfiz_kepribadian' => $request->tahfiz_kepribadian,
+            'tahfiz_mengajar' => $request->tahfiz_mengajar,
+
+            'pendidikan_pengalaman' => $request->pendidikan_pengalaman,
+            'pendidikan_tahfiz' => $pendidikan_pendidikan / $request->tahfiz_pendidikan,
+            'pendidikan_pendidikan' => $pendidikan_pendidikan,
+            'pendidikan_kepribadian' => $request->pendidikan_kepribadian,
+            'pendidikan_mengajar' => $request->pendidikan_mengajar,
+
+            'kepribadian_pengalaman' => $request->kepribadian_pengalaman,
+            'kepribadian_tahfiz' => $kepribadian_kepribadian / $request->tahfiz_kepribadian,
+            'kepribadian_pendidikan' => $kepribadian_kepribadian / $request->pendidikan_kepribadian,
+            'kepribadian_kepribadian' => $kepribadian_kepribadian,
+            'kepribadian_mengajar' => $kepribadian_kepribadian / $request->mengajar_kepribadian,
+
+            'mengajar_pengalaman' => $request->mengajar_pengalaman,
+            'mengajar_tahfiz' => $mengajar_mengajar / $request->tahfiz_mengajar,
+            'mengajar_pendidikan' => $mengajar_mengajar / $request->pendidikan_mengajar,
             'mengajar_kepribadian' => $request->mengajar_kepribadian,
             'mengajar_mengajar' => $mengajar_mengajar,
         ];

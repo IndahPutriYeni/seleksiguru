@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="flex flex-col m-10 bg-gray-100">
-    <form action="{{ route('admin.kepalaSekolah.ahp.process') }}" method="POST">
+    <form action="{{ $postUrl }}" method="POST">
       @csrf
       @foreach ($kriteria as $key => $value)
         <div class="flex flex-row items-center justify-center gap-5 space-y-3">
