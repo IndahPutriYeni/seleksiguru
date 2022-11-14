@@ -4,6 +4,7 @@ namespace App\Http\Controllers\KepalaYayasan;
 
 use App\Http\Controllers\Controller;
 use App\Models\NilaiKriteria;
+use App\Models\NilaiPerbandingan;
 use App\Services\AhpService;
 use Illuminate\Http\Request;
 
@@ -37,9 +38,15 @@ class AhpController extends Controller
             ->get()
             ->pluck('nilai', 'kode')
             ->toArray();
-        $result = AhpService::processPerbandingan($kriteria);
+        $perbandingan = NilaiPerbandingan::where('tipe', 'kepala_yayasan')
+            ->first()
+            ->toArray();
 
-        return view('Admin.methode.ahp-perbandingan', ['kriteria' => $kriteria, ...$result]);
+        if (count($kriteria) === 0) {
+            return redirect()->route('admin.kepalaYayasan.ahp');
+        }
+
+        return view('Admin.methode.ahp-perbandingan', compact('kriteria', 'perbandingan'));
     }
 
     public function ahpProcess(Request $request)
@@ -49,6 +56,24 @@ class AhpController extends Controller
         foreach ($data as $kode => $nilai) {
             NilaiKriteria::updateOrCreate(['kode' => $kode, 'tipe' => 'kepala_yayasan'], ['nilai' => $nilai]);
         }
+
+        // Nilai Perbandingan
+        $kriteria = NilaiKriteria::where('tipe', 'kepala_yayasan')
+            ->get()
+            ->pluck('nilai', 'kode')
+            ->toArray();
+        $result = AhpService::processPerbandingan($kriteria);
+
+        NilaiPerbandingan::updateOrCreate([
+            'tipe' => 'kepala_yayasan',
+        ], [
+            'jumlah_kriteria' => $result['jumlah'],
+            'jumlah_eigen' => $result['eigen'],
+            'rata_eigen' => $result['rataEigen'],
+            'lambda_max' => $result['lambdaMax'],
+            'ci' => $result['ci'],
+            'cr' => $result['cr'],
+        ]);
 
         return redirect()->route('admin.kepalaYayasan.ahp.perbandingan');
     }
