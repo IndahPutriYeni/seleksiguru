@@ -21,12 +21,26 @@
                   </h6>
                 </div>
               </div>
-              @if(session()->has('success'))
-        <div class="bg-green-400 mx-5 px-3 py-2 text-white tracking-wider rounded-lg">
-            <span class="font-semibold">Berhasil</span>
-            <span class="text-base">{{session()->get('success')}}</span>
-        </div>
-        @endif
+              @if (session()->has('success'))
+                <script>
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+
+                  Toast.fire({
+                    icon: 'success',
+                    title: '{{ session()->get('success') }}'
+                  })
+                </script>
+              @endif
               @if ($errors->all())
                 <div class="w-full bg-red-200 py-4">
                   <ul class="text-red-500 list-disc mx-8">
