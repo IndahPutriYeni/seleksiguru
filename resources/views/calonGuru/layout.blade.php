@@ -25,17 +25,18 @@
       <div class="lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none hidden" id="collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none mr-auto">
 
-          <li class="flex items-center">
-            <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
-              href="{{ route('surat') }}"><i
-                class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
-              Surat-surat</a>
-          </li>
+          
           <li class="flex items-center">
             <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
               href="{{ route('profile') }}"><i
                 class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
               Profile</a>
+          </li>
+          <li class="flex items-center">
+            <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+              href="{{ route('surat') }}"><i
+                class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+              Upload Berkas</a>
           </li>
           <li class="flex items-center">
             <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
