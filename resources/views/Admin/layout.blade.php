@@ -54,14 +54,15 @@
 
         <ul class="md:flex-col md:min-w-full flex flex-col list-none">
           <li class="items-center">
-            <a href="./dashboard.html" class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
+            <a href="{{ route('admin.guru.index') }}"
+              class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
               <i class="fas fa-user mr-2 text-sm opacity-75"></i>
               List Guru
             </a>
           </li>
 
           <li class="items-center">
-            <a href=".{{ route('admin.kategori') }}"
+            <a href="{{ route('admin.kategori') }}"
               class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
               <i class="fas fa-list mr-2 text-sm text-slate-500"></i>
               Kriteria
@@ -69,7 +70,7 @@
           </li>
 
           <li class="items-center">
-            <a href=".{{ route('admin.user') }}"
+            <a href="{{ route('admin.user') }}"
               class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
               <i class="fas fa-users mr-2 text-sm text-slate-500"></i>
               User

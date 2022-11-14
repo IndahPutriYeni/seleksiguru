@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'name' => 'kepsek',
             'email' => 'kepsek@admin.com',
             'password' => Hash::make('12345678'),
-            'jabatan' => 'akepala_sekolah',
+            'jabatan' => 'kepala_sekolah',
             'isAdmin' => 1
         ]);
         User::insert([
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'name' => 'kepala yayasan',
             'email' => 'yayasan@admin.com',
             'password' => Hash::make('12345678'),
-            'jabatan' => 'akepala_yayasan',
+            'jabatan' => 'kepala_yayasan',
             'isAdmin' => 1
         ]);
 

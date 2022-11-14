@@ -52,7 +52,7 @@ class CalonGuruController extends Controller
             $dataGuru->foto_profile = $storeImage;
         }
         $dataGuru->save();
-            return redirect(route('profile'));
+            return redirect(route('profile'))->withSuccess('Sukses upload surat menyurat anda');;
     }
 
     public function suratSurat()

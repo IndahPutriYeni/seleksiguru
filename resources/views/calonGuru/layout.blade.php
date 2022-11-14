@@ -24,12 +24,7 @@
       </div>
       <div class="lg:flex flex-grow items-center lg:bg-opacity-0 lg:shadow-none hidden" id="collapse-navbar">
         <ul class="flex flex-col lg:flex-row list-none mr-auto">
-          <li class="flex items-center">
-            <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
-              href="{{ route('dataDiri') }}"><i
-                class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
-              Data Diri</a>
-          </li>
+
           <li class="flex items-center">
             <a class="lg:text-slate-700 lg:hover:text-indigo-600 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
               href="{{ route('surat') }}"><i
@@ -64,20 +59,7 @@
       </div>
     </div>
   </nav>
-  {{-- <nav class="w-96 block text-center border-r relative bg-white z-10 h-screen">
-      <img src="{{ asset('images/profile.png') }}" class="w-24 h-24 rounded-full mx-auto my-32" />
-      <a href="{{ route('profile') }}"
-        class="block w-full hover:bg-indigo-500 text-indigo-500 hover:text-white py-4">Profile</a>
-      <a href="{{ route('surat') }}"
-        class="block w-full hover:bg-indigo-500 text-indigo-500 hover:text-white py-4">Ijazah
-        &
-        Akte</a>
-      <a href="{{ route('dataDiri') }}"
-        class="block w-full hover:bg-indigo-500 text-indigo-500 hover:text-white py-4">Data
-        Diri</a>
-      <a href="{{ route('logout') }}"
-        class="block w-full hover:bg-indigo-500 text-indigo-500 hover:text-white py-4">Logout</a>
-    </nav> --}}
+
   <div class="container mx-auto mt-16">
     @yield('content')
   </div>
@@ -87,9 +69,9 @@
       <div class="flex flex-wrap items-center md:justify-between justify-center">
         <div class="w-full md:w-4/12 px-4">
           <div class="text-sm text-white font-semibold py-1 text-center md:text-left">
-            Copyright © <span id="get-current-year"></span>
-            <a href="https://www.creative-tim.com?ref=njs-login"
-              class="text-white hover:text-slate-500 text-sm font-semibold py-1">SD IT Daafa</a>
+            Copyright © {{ now()->year }}
+            <a href="{{ route('index') }}" class="text-white hover:text-slate-500 text-sm font-semibold py-1">SD IT
+              Daafa</a>
           </div>
         </div>
         <div class="w-full md:w-8/12 px-4">
@@ -112,13 +94,6 @@
 </body>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
 <script>
-  /* Make dynamic date appear */
-  (function() {
-    if (document.getElementById("get-current-year")) {
-      document.getElementById("get-current-year").innerHTML =
-        new Date().getFullYear();
-    }
-  })();
   /* Function for opning navbar on mobile */
   function toggleNavbar(collapseID) {
     document.getElementById(collapseID).classList.toggle("hidden");
