@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\CalonGuru;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,17 +24,17 @@ class LoginController extends Controller
         $validated = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
         CalonGuru::create([
-            'id' => $user->id
+            'id' => $user->id,
         ]);
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], true)){
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
             $request->session()->regenerate();
             return redirect(route('dataDiri'));
         }
@@ -45,15 +45,15 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
- 
+
         if (Auth::attempt($credentials, true)) {
             $request->session()->regenerate();
-            if(auth()->user()->isAdmin){
+            if (auth()->user()->isAdmin) {
                 return redirect(route('admin.index'));
             }
             return redirect(route('profile'));
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -68,9 +68,9 @@ class LoginController extends Controller
 
             return redirect('/');
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return response([
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ], 400);
         }
     }

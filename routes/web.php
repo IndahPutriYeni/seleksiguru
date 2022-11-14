@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MethodeController;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\CalonGuruController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KepalaSekolah\AhpController as KSAhpController;
+use App\Http\Controllers\KepalaYayasan\AhpController as KYAhpController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,7 @@ use App\Http\Controllers\CalonGuruController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-
+ */
 
 // Route::get('/login', [LoginController::class, 'show'])->name('login');
 // Route::post('/login', [LoginController::class, 'authenticate']);
@@ -28,9 +26,10 @@ use App\Http\Controllers\CalonGuruController;
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 require __DIR__.'/auth.php';
+
 Route::middleware(['auth', 'guru'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
-    Route::get('/dashboard', 'profile')->name('profile');
+    Route::get('/dashboard', 'profile')->name('dashboard');
     Route::post('/profile/edit', 'editProfile')->name('editProfile');
     Route::get('/surat-surat', 'suratSurat')->name('surat');
     Route::post('/surat-surat', 'uploadSurat');
@@ -44,19 +43,16 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::post('/user/add', [AdminController::class, 'addUserPost'])->name('postUser');
     Route::get('/user/{id}/edit', [AdminController::class, 'editUser'])->name('editUser');
     Route::put('/user/{id}/edit', [AdminController::class, 'putUser'])->name('putUser');
-    Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser'])->name('putUser');
+    Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser'])->name('deleteUser');
 
-
-
-    
-    Route::controller(KategoriController::class)->group(function(){
+    Route::controller(KategoriController::class)->group(function () {
         Route::get('kategori', 'listGuru')->name('kategori');
         Route::post('kategori', 'addKategori')->name('addKategori');
         Route::put('kategori/{id}', 'editKategori')->name('kategoriEdit');
         Route::delete('kategori/{id}', 'hapusKategori')->name('deleteKategori');
     });
 
-    Route::controller(GuruController::class)->group(function(){
+    Route::controller(GuruController::class)->group(function () {
         Route::get('guru', 'listGuru')->name('guru.index');
         Route::get('guru/nilai', 'addMassNilai')->name('guru.add.mass');
         Route::get('guru/{id}/surat', 'showSurat')->name('guru.surat');
@@ -65,20 +61,29 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
         Route::delete('guru/{id}', 'hapusGuru')->name('guru.delete');
     });
 
-    Route::controller(MethodeController::class)->group(function(){
-        Route::get('ahp', 'ahp')->name('ahp');
-        Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
-        Route::post('ahp', 'ahpProcess')->name('ahp.process');
-        Route::get('topsis', 'showTopsis')->name('topsis');
-        Route::get('copeland', 'showCopeland')->name('copeland');
-    });
-    
+    Route::controller(KSAhpController::class)
+        ->prefix('kepala-sekolah')
+        ->as('kepalaSekolah.')
+        ->group(function () {
+            Route::get('ahp', 'ahp')->name('ahp');
+            Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
+            Route::post('ahp', 'ahpProcess')->name('ahp.process');
+        });
+
+    Route::controller(KYAhpController::class)
+        ->prefix('kepala-yayasan')
+        ->as('kepalaYayasan.')
+        ->group(function () {
+            Route::get('ahp', 'ahp')->name('ahp');
+            Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
+            Route::post('ahp', 'ahpProcess')->name('ahp.process');
+        });
 });
 
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('index');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
-Route::get('/perjanjian', function () {
-    return view('calonGuru.perjanjian');
-})->name('perjanjian');
+// Route::get('/perjanjian', function () {
+//     return view('calonGuru.perjanjian');
+// })->name('perjanjian');

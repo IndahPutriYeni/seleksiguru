@@ -13,33 +13,32 @@
 
 <body class="antialiased">
   <nav
-    class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
-    <div
-      class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
+    class="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
+    <div class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap">
       <button
-        class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+        class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden"
         type="button" onclick="toggleNavbar('example-collapse-sidebar')">
         <i class="fas fa-bars"></i>
       </button>
-      <a class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+      <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-left uppercase md:block md:pb-2 text-slate-600 whitespace-nowrap"
         href="{{ route('admin.index') }}">
         Admin
       </a>
       <div
-        class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden"
+        class="absolute top-0 left-0 right-0 z-40 items-center flex-1 hidden h-auto overflow-x-hidden overflow-y-auto rounded shadow md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none"
         id="example-collapse-sidebar">
-        <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-slate-200">
+        <div class="block pb-4 mb-4 border-b border-solid md:min-w-full md:hidden border-slate-200">
           <div class="flex flex-wrap justify-between">
 
             <div class="">
               <button type="button"
-                class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+                class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden"
                 onclick="toggleNavbar('example-collapse-sidebar')">
                 <i class="fas fa-times"></i>
               </button>
             </div>
             <div class="">
-              <a class="md:block text-right md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+              <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-right uppercase md:block md:pb-2 text-slate-600 whitespace-nowrap"
                 href="{{ route('admin.index') }}">
                 Admin
               </a>
@@ -48,75 +47,77 @@
         </div>
 
         <!-- Heading -->
-        <h6 class="md:min-w-full text-slate-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+        <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
           Admin
         </h6>
         <!-- Navigation -->
 
-        <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+        <ul class="flex flex-col list-none md:flex-col md:min-w-full">
           <li class="items-center">
-            <a href="{{ route('admin.guru.index') }}"
-              class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
-              <i class="fas fa-user mr-2 text-sm opacity-75"></i>
+            <a href="{{ route('admin.guru.index') }}" class="block py-3 text-xs font-bold text-pink-500 uppercase hover:text-pink-600">
+              <i class="mr-2 text-sm opacity-75 fas fa-user"></i>
               List Guru
             </a>
           </li>
 
           <li class="items-center">
-            <a href="{{ route('admin.kategori') }}"
-              class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
-              <i class="fas fa-list mr-2 text-sm text-slate-500"></i>
+            <a href="{{ route('admin.kategori') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-list text-slate-500"></i>
               Kriteria
             </a>
           </li>
 
           <li class="items-center">
-            <a href="{{ route('admin.user') }}"
-              class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
-              <i class="fas fa-users mr-2 text-sm text-slate-500"></i>
+            <a href="{{ route('admin.user') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-users text-slate-500"></i>
               User
             </a>
           </li>
 
-          <li class="items-center">
-            <a href="{{ route('admin.ahp') }}"
-              class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
-              <i class="fas fa-table mr-2 text-sm text-slate-500"></i>
-              AHP
-            </a>
-          </li>
-
-          <li class="items-center">
-            <a href="{{ route('admin.topsis') }}"
-              class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
-              <i class="fas fa-database mr-2 text-sm text-slate-500"></i>
+          {{-- <li class="items-center">
+            <a href="{{ route('admin.topsis') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-database text-slate-500"></i>
               Topsis
             </a>
           </li>
 
           <li class="items-center">
-            <a href="{{ route('admin.copeland') }}"
-              class="text-xs uppercase py-3 font-bold block text-slate-700 hover:text-slate-500">
-              <i class="fas fa-sort mr-2 text-sm text-slate-500"></i>
+            <a href="{{ route('admin.copeland') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-sort text-slate-500"></i>
               Copeland
             </a>
-          </li>
+          </li> --}}
         </ul>
 
         <!-- Divider -->
         <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
-        <h6 class="md:min-w-full text-slate-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+        <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
+          Kepala Sekolah
+        </h6>
+        <!-- Navigation -->
+        <ul>
+          <li class="items-center">
+            <a href="{{ route('admin.kepalaSekolah.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
+              AHP
+            </a>
+          </li>
+        </ul>
+
+        <hr class="my-4 md:min-w-full" />
+        <!-- Heading -->
+        <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
           Authentication
         </h6>
         <!-- Navigation -->
 
-        <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+        <ul class="flex flex-col list-none md:flex-col md:min-w-full md:mb-4">
           <li class="items-center">
             <form method="POST" action="{{ route('logout') }}">
               @csrf
-              <button type="submit" class="text-slate-700 hover:text-red-500 text-xs uppercase py-3 font-bold block">
-                <i class="fas fa-door-open text-slate-500 mr-2 text-sm"></i>
+              <button type="submit" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-red-500">
+                <i class="mr-2 text-sm fas fa-door-open text-slate-500"></i>
                 Logout
               </button>
             </form>
@@ -125,7 +126,8 @@
       </div>
     </div>
   </nav>
-  <div>
+
+  <div class="absolute w-screen left-[20%]">
     @yield('content')
   </div>
   <script>
