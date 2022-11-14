@@ -25,14 +25,25 @@ class GuruController extends Controller
         $kriteria = Kriteria::all();
 
         foreach($kriteria as $cat){
-            // NilaiAlternatif::where(condition);
-            NilaiAlternatif::updateOrCreate([
-                'calon_guru_id' => $request->id,
-                'penilai_id' => auth()->user()->id,
-                'kriteria_id' => $cat->id,
-                'jabatan'=> auth()->user()->jabatan,
-                'nilai' =>  $request->input($cat->id),
-            ]);
+            $nilai = NilaiAlternatif::where('calon_guru_id', $request->id)
+            ->where('kriteria_id', $cat->id)->first();
+            if($nilai){
+                $nilai->calon_guru_id = $request->id;
+                $nilai->penilai_id = auth()->user()->id;
+                $nilai->kriteria_id = $cat->id;
+                $nilai->jabatan = auth()->user()->jabatan;
+                $nilai->nilai = $request->input($cat->id);
+                $nilai->save();
+
+            }else{
+                NilaiAlternatif::updateOrCreate([
+                    'calon_guru_id' => $request->id,
+                    'penilai_id' => auth()->user()->id,
+                    'kriteria_id' => $cat->id,
+                    'jabatan'=> auth()->user()->jabatan,
+                    'nilai' =>  $request->input($cat->id),
+                ]);
+            }
         }
         return \redirect()->intended(route('admin.guru.index'));
         

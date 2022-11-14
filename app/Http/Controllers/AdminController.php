@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Kriteria;
 use App\Models\CalonGuru;
 use Illuminate\Http\Request;
+use App\Models\NilaiAlternatif;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
 {
     //
     public function index()
     {
-        $countUser = User::all()->count();
+        $countUser = User::where('jabatan', 'kepala_sekolah')->orWhere('jabatan', 'kepala_yayasan')->count();
         $countGuru = CalonGuru::all()->count();
+        $dataGuru = CalonGuru::all();
         $countKriteria = Kriteria::all()->count();
-        return view('Admin.index', compact('countUser', 'countGuru', 'countKriteria'));
+        $countNilai = NilaiAlternatif::distinct('calon_guru_id')->count();
+        return view('Admin.index', compact('countUser', 'countGuru', 'countKriteria', 'countNilai', 'dataGuru'));
     }
 
     public function user()
     {
-        $users = User::where('jabatan', 'kepala_sekolah')
-            ->orWhere('jabatan', 'kepala_yayasan')
+        $user = User::where('isAdmin', 1)
             ->get();
-        $userCount = User::where('jabatan', 'kepala_sekolah')
-            ->orWhere('jabatan', 'kepala_yayasan')
-            ->count();
-        return view('Admin.user.index', compact('users', 'userCount'));
+        return view('Admin.user.index', compact('user'));
     }
 
 
@@ -44,40 +45,43 @@ class AdminController extends Controller
             'password' => ['required', Password::min(8)],
             'jabatan' => 'required',
         ]);
-
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make($request->password),
             'jabatan' => $request->jabatan,
-            'isAdmin' => 1,
+            'isAdmin' => $isAdmin,
         ]);
-        return redirect(route('admin.user'));
+        return redirect(route('admin.user'))->withSuccess('Berhasil Tambah User');
     }
 
-    public function editUser($id)
+    public function editUser(Request $request)
     {
-        $user = User::where('id', $id)->get();
+        $user = User::find($request->id);
         return view('Admin.user.edit', compact('user'));
     }
 
-    public function putUser($id)
+    public function putUser(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->id);
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => ['required', Password::min(8)],
+            'email' => 'required|email',
+            'password' => ['nullable', Password::min(8)],
             'jabatan' => 'required',
         ]);
-        User::updateOrCreate($validated);
-        return redirect(route('admin.user'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->jabatan = $request->jabatan;
+        $user->save();
+        return redirect(route('admin.user'))->withSuccess('Berhasil Ubah User');
     }
 
-    public function deleteUser($id)
+    public function deleteUser(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->id);
         if($user){
             $nilaiKriteria = NilaiAlternatif::where('penilai_id', $id)->get();
             if($nilaiKriteria){

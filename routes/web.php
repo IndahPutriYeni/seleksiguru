@@ -42,17 +42,19 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/user', [AdminController::class, 'user'])->name('user');
     Route::get('/user/add', [AdminController::class, 'addUser'])->name('addUser');
     Route::post('/user/add', [AdminController::class, 'addUserPost'])->name('postUser');
-    Route::get('/user/{id}/edit', [AdminController::class, 'editUser'])->name('editUser');
-    Route::put('/user/{id}/edit', [AdminController::class, 'putUser'])->name('putUser');
-    Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser'])->name('putUser');
+    Route::get('/user/{id}', [AdminController::class, 'editUser'])->name('editUser');
+    Route::put('/user/{id}', [AdminController::class, 'putUser'])->name('putUser');
+    Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser'])->name('deleteUser');
 
 
 
     
     Route::controller(KategoriController::class)->group(function(){
-        Route::get('kategori', 'listGuru')->name('kategori');
-        Route::post('kategori', 'addKategori')->name('addKategori');
-        Route::put('kategori/{id}', 'editKategori')->name('kategoriEdit');
+        Route::get('kategori', 'listKategori')->name('kategori');
+        Route::get('kategori/add', 'addKategori')->name('addKategori');
+        Route::post('kategori/add', 'postKategori')->name('postKategori');
+        Route::get('kategori/{id}', 'editKategori')->name('editKategori');
+        Route::put('kategori/{id}', 'putKategori')->name('kategoriEdit');
         Route::delete('kategori/{id}', 'hapusKategori')->name('deleteKategori');
     });
 
