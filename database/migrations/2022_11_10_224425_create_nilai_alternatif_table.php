@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nilai_alternatif', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('calon_guru_id')->constrained('users');
             $table->foreignId('penilai_id')->constrained('users');
             $table->foreignId('kriteria_id')->constrained('kriteria');

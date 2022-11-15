@@ -54,7 +54,7 @@
 
         <ul class="flex flex-col list-none md:flex-col md:min-w-full">
           <li class="items-center">
-            <a href="{{ route('admin.guru.index') }}" class="block py-3 text-xs font-bold text-pink-500 uppercase hover:text-pink-600">
+            <a href="{{ route('admin.guru.index') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-pink-600">
               <i class="mr-2 text-sm opacity-75 fas fa-user"></i>
               List Guru
             </a>
@@ -162,6 +162,26 @@
   <div class="absolute w-screen left-[20%]">
     @yield('content')
   </div>
+  @if (session()->has('success'))
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: '{{ session()->get('success') }}'
+      })
+    </script>
+  @endif
   <script>
     function toggleNavbar(collapseID) {
       document.getElementById(collapseID).classList.toggle("hidden");

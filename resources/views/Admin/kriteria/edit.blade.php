@@ -13,50 +13,28 @@
 
         </div>
       </div>
-      @if ($errors->all())
-        <div class="w-full bg-red-200 py-4">
-          <ul class="text-red-500 list-disc mx-8">
-            @foreach ($errors->all(':message') as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
       <div class="block w-full overflow-x-auto p-8">
         <!-- Projects table -->
-        <form method="POST" action="{{ route('admin.editUser') }}">
+        <form method="POST" action="{{ route('admin.kategoriEdit', $cat->id) }}">
           @csrf
           @method('PUT')
           <div class="block my-4">
             <label for="name" class="text-small font-semibold">Nama</label>
             <input type="text"
               class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="name" id="name" />
+              name="name" id="name" value="{{ $cat->name }}" />
           </div>
           <div class="block my-4">
-            <label for="email" class="text-small font-semibold">Email</label>
+            <label for="kode" class="text-small font-semibold">Kode</label>
             <input type="text"
               class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="email" id="email" />
+              name="kode" id="kode" value="{{ $cat->kode }}" />
           </div>
           <div class="block my-4">
-            <label for="password" class="text-small font-semibold">Password</label>
+            <label for="bobot_topsis" class="text-small font-semibold">Bobot Topsis</label>
             <input type="text"
               class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="password" id="password" />
-          </div>
-          <div class="block my-4">
-            <label for="jabatan" class="text-small font-semibold">Jabatan</label>
-            <select
-              class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="jabatan" required>
-              <option value="kepala_sekolah">Kepala Sekolah</option>
-              <option value="kepala_yayasan">Kepala Yayasan</option>
-              <option value="admin">Admin</option>
-            </select>
-            <input type="text"
-              class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="jabatan" id="jabatan" />
+              name="bobot_topsis" id="bobot_topsis" value="{{ $cat->bobot_topsis }}" />
           </div>
           <button type="submit" class="p-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Simpan</button>
         </form>
