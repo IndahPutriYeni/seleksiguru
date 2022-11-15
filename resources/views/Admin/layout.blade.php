@@ -111,6 +111,14 @@
               AHP Perbandingan
             </a>
           </li>
+
+          <li class="items-center">
+            <a href="{{ route('admin.kepalaSekolah.topsis') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+              <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
+              Topsis
+            </a>
+          </li>
         </ul>
 
         <!-- Divider -->

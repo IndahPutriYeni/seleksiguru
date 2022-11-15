@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('kode');
-            $table->string('atribut');
+            $table->string('atribut')->default('benefit');
             $table->string('bobot');
         });
     }
