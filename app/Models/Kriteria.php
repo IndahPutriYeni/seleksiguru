@@ -14,7 +14,8 @@ class Kriteria extends Model
     protected $fillable = [
         'name',
         'kode',
-        'bobot_topsis'
+        'atribut',
+        'bobot'
     ];
 
     public $timestamps = false;

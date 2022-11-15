@@ -24,7 +24,7 @@ class KategoriController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'kode' => 'required',
-            'bobot_topsis' => 'required'
+            'atribut' => 'required'
         ]);
         Kriteria::create($validated);
         return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Tambah Kategori');
@@ -41,13 +41,13 @@ class KategoriController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'kode' => 'required',
-            'bobot_topsis' => 'required'
+            'atribut' => 'required',
         ]);
 
         $kategori = Kriteria::find($request->id);
         $kategori->name = $request->name;
         $kategori->kode = $request->kode;
-        $kategori->bobot_topsis = $request->bobot_topsis;
+        $kategori->atribut = $request->atribut;
         $kategori->save();
         return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Ubah Kategori');
     }
