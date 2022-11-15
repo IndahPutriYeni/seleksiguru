@@ -90,10 +90,10 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
         });
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('index');
+Route::get('/', function () {
+    return view('welcome');
+})->name('index');
 
-// Route::get('/perjanjian', function () {
-//     return view('calonGuru.perjanjian');
-// })->name('perjanjian');
+Route::get('/perjanjian', function () {
+    return view('calonGuru.perjanjian');
+})->name('perjanjian');

@@ -2,10 +2,10 @@
 @section('title', 'Admin')
 @section('content')
   {{-- {{ dd(auth()->user()) }} --}}
-  <div class="bg-gray-100 ml-64 p-8">
+  <div class="bg-gray-100 p-8">
     <h1>Input Nilai Calon Guru</h1>
     <div class="bg-white">
-      <table class="items-center w-full bg-transparent border-collapse bg-white">
+      <table class="items-center bg-transparent border-collapse bg-white">
         <thead>
           <tr>
             <th

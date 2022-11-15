@@ -27,6 +27,7 @@ class GuruController extends Controller
         foreach($kriteria as $cat){
             $nilai = NilaiAlternatif::where('calon_guru_id', $request->id)
             ->where('kriteria_id', $cat->id)->first();
+            // dd($nilai);
             if($nilai){
                 $nilai->calon_guru_id = $request->id;
                 $nilai->penilai_id = auth()->user()->id;
@@ -34,7 +35,6 @@ class GuruController extends Controller
                 $nilai->jabatan = auth()->user()->jabatan;
                 $nilai->nilai = $request->input($cat->id);
                 $nilai->save();
-
             }else{
                 NilaiAlternatif::updateOrCreate([
                     'calon_guru_id' => $request->id,
@@ -45,7 +45,7 @@ class GuruController extends Controller
                 ]);
             }
         }
-        return \redirect()->intended(route('admin.guru.index'));
+        return \redirect(route('admin.guru.index'))->withSuccess('Berhasil Mengubah nilai guru');
         
     }
 }

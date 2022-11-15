@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="flex flex-col m-10 bg-gray-100">
-    <table class="table text-center">
+    <table class="table text-center border-collapse">
       <thead>
         <tr>
           <th>Kriteria</th>
@@ -82,7 +82,7 @@
     <div class="flex flex-col mt-5">
       <span>Lambda Max = {{ $perbandingan['lambda_max'] }}</span>
       <span>CI = {{ $perbandingan['ci'] }}</span>
-      <span>CR = {{ $perbandingan['cr'] }}</span>
+      <span>CR = {{ $perbandingan['cr'] }} {{ $perbandingan['cr'] > 1 ? 'TIDAK KONSISTEN' : 'KONSISTEN' }}</span>
     </div>
   </div>
 @endsection

@@ -21,5 +21,15 @@ class NilaiAlternatif extends Model
     {
         return $this->belongsTo(User::class, 'calon_guru_id');
     }
+
+    public function guru() 
+    {
+        return $this->belongsTo(CalonGuru::class, 'calon_guru_id', 'id');
+    }
+
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class, 'kriteria_id', 'id');
+    }
     public $timestamps = false;
 }

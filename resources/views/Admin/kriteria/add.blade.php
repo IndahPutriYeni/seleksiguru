@@ -1,7 +1,7 @@
 @extends('Admin.layout')
 @section('title', 'Index Admin')
 @section('content')
-  <div class="mb-12 px-4 md:ml-64 mt-8">
+  <div class="mb-12 px-4 md:ml-4 mt-8">
     <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -30,10 +30,13 @@
               name="kode" id="kode" />
           </div>
           <div class="block my-4">
-            <label for="bobot_topsis" class="text-small font-semibold">Bobot Topsis</label>
-            <input type="text"
+            <label for="atribut" class="text-small font-semibold">Atribut</label>
+            <select
               class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="bobot_topsis" id="bobot_topsis" />
+              name="atribut" required>
+              <option value="cost">Cost</option>
+              <option value="benefit">Benefit</option>
+            </select>
           </div>
           <button type="submit" class="p-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Simpan</button>
         </form>

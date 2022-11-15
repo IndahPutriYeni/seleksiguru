@@ -25,27 +25,27 @@ class DatabaseSeeder extends Seeder
         Kriteria::create([
             'name' => 'Pengalaman',
             'kode' => 'C4',
-            'bobot_topsis' => '0.09'
+            'bobot' => '0.09'
         ]);
         Kriteria::create([
             'name' => 'Tahfiz',
             'kode' => 'C1',
-            'bobot_topsis' => '0.11'
+            'bobot' => '0.11'
         ]);
         Kriteria::create([
             'name' => 'Pendidikan',
             'kode' => 'C3',
-            'bobot_topsis' => '0.15'
+            'bobot' => '0.15'
         ]);
         Kriteria::create([
             'name' => 'Kepribadian',
             'kode' => 'C5',
-            'bobot_topsis' => '0.21'
+            'bobot' => '0.21'
         ]);
         Kriteria::create([
             'name' => 'Mengajar',
             'kode' => 'C2',
-            'bobot_topsis' => '0.42'
+            'bobot' => '0.42'
         ]);
 
         // NilaiKriteria::create([
