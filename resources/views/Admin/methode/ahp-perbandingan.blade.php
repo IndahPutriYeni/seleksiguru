@@ -3,8 +3,8 @@
 @section('title', 'AHP Perbandingan - Kepala Sekolah')
 
 @section('content')
-  <div class="flex flex-col m-10 bg-gray-100 p-4">
-    <table class="table text-center border-collapse p-4">
+  <div class="flex flex-col p-4 m-10 bg-gray-500">
+    <table class="table p-4 text-center border-collapse">
       <thead>
         <tr>
           <th class="w-64">Kriteria</th>
@@ -18,8 +18,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th class="text-left py-2">Pengalaman</th>
+        <tr class="text-blue-500">
+          <th class="py-2 text-left">Pengalaman</th>
           <td>{{ round($kriteria['pengalaman_pengalaman'], 2) }}</td>
           <td>{{ round($kriteria['pengalaman_tahfiz'], 2) }}</td>
           <td>{{ round($kriteria['pengalaman_pendidikan'], 2) }}</td>
@@ -29,7 +29,7 @@
           <td>{{ round($perbandingan['rata_eigen']['pengalaman'], 2) }}</td>
         </tr>
         <tr>
-          <th class="text-left py-2">Tahfiz</th>
+          <th class="py-2 text-left">Tahfiz</th>
           <td>{{ round($kriteria['tahfiz_pengalaman'], 2) }}</td>
           <td>{{ round($kriteria['tahfiz_tahfiz'], 2) }}</td>
           <td>{{ round($kriteria['tahfiz_pendidikan'], 2) }}</td>
@@ -39,7 +39,7 @@
           <td>{{ round($perbandingan['rata_eigen']['tahfiz'], 2) }}</td>
         </tr>
         <tr>
-          <th class="text-left py-2">Pendidikan</th>
+          <th class="py-2 text-left">Pendidikan</th>
           <td>{{ round($kriteria['pendidikan_pengalaman'], 2) }}</td>
           <td>{{ round($kriteria['pendidikan_tahfiz'], 2) }}</td>
           <td>{{ round($kriteria['pendidikan_pendidikan'], 2) }}</td>
@@ -49,7 +49,7 @@
           <td>{{ round($perbandingan['rata_eigen']['pendidikan'], 2) }}</td>
         </tr>
         <tr>
-          <th class="text-left py-2">Kepribadian</th>
+          <th class="py-2 text-left">Kepribadian</th>
           <td>{{ round($kriteria['kepribadian_pengalaman'], 2) }}</td>
           <td>{{ round($kriteria['kepribadian_tahfiz'], 2) }}</td>
           <td>{{ round($kriteria['kepribadian_pendidikan'], 2) }}</td>
@@ -59,7 +59,7 @@
           <td>{{ round($perbandingan['rata_eigen']['kepribadian'], 2) }}</td>
         </tr>
         <tr>
-          <th class="text-left py-2">Mengajar</th>
+          <th class="py-2 text-left">Mengajar</th>
           <td>{{ $kriteria['mengajar_pengalaman'] }}</td>
           <td>{{ $kriteria['mengajar_tahfiz'] }}</td>
           <td>{{ $kriteria['mengajar_pendidikan'] }}</td>
@@ -69,7 +69,7 @@
           <td>{{ $perbandingan['rata_eigen']['mengajar'] }}</td>
         </tr>
         <tr>
-          <th class="text-left py-2">Jumlah</th>
+          <th class="py-2 text-left">Jumlah</th>
           <td>{{ $perbandingan['jumlah_kriteria']['pengalaman'] }}</td>
           <td>{{ $perbandingan['jumlah_kriteria']['tahfiz'] }}</td>
           <td>{{ $perbandingan['jumlah_kriteria']['pendidikan'] }}</td>

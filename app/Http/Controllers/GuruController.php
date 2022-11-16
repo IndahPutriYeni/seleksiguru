@@ -4,24 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Kriteria;
+use App\Models\CalonGuru;
 use Illuminate\Http\Request;
 use App\Models\NilaiAlternatif;
 
 class GuruController extends Controller
 {
     //
-    public function listGuru()
-    {
+    public function nilaiGuruKepsek(){
         $guru = User::where('jabatan', 'calon_guru')->get();
         $guruCount = User::where('jabatan', 'calon_guru')->count();
         $kriteria = Kriteria::all();
         $countKriteria = Kriteria::all()->count();
-        if(auth()->user()->jabatan === 'kepala_sekolah'){
-            return view('Admin.guru.kepsek', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
-        }elseif((auth()->user()->jabatan === 'kepala_yayasan')){
-            return view('Admin.guru.yayasan', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
-        }
-        return view('Admin.guru.index', compact('dataGuru'   ));
+        return view('Admin.guru.kepsek', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
+    }
+
+    public function nilaiGuruYayasan(){
+        $guru = User::where('jabatan', 'calon_guru')->get();
+        $guruCount = User::where('jabatan', 'calon_guru')->count();
+        $kriteria = Kriteria::all();
+        $countKriteria = Kriteria::all()->count();
+        return view('Admin.guru.yayasan', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
+    }
+
+    public function listGuru()
+    {
+        $guru = User::where('jabatan', 'calon_guru')->get();
+        $dataGuru = CalonGuru::all();
+        $guruCount = User::where('jabatan', 'calon_guru')->count();
+        $kriteria = Kriteria::all();
+        $countKriteria = Kriteria::all()->count();
+        return view('Admin.guru.list', compact('dataGuru'));
     }
 
     public function addNilai(Request $request)
@@ -30,7 +43,9 @@ class GuruController extends Controller
 
         foreach($kriteria as $cat){
             $nilai = NilaiAlternatif::where('calon_guru_id', $request->id)
-            ->where('kriteria_id', $cat->id)->first();
+            ->where('kriteria_id', $cat->id)
+            ->where('jabatan', auth()->user()->jabatan)
+            ->first();
             // dd($nilai);
             if($nilai){
                 $nilai->calon_guru_id = $request->id;
@@ -49,7 +64,12 @@ class GuruController extends Controller
                 ]);
             }
         }
-        return \redirect(route('admin.guru.index'))->withSuccess('Berhasil Mengubah nilai guru');
+        if(auth()->user()->jabatan == 'kepala_sekolah'){
+            return \redirect(route('admin.guru.kepsep'))->withSuccess('Berhasil Mengubah nilai guru');
+        }else if(auth()->user()->jabatan == 'kepala_yayasan')
+        {
+            return \redirect(route('admin.guru.yayasan'))->withSuccess('Berhasil Mengubah nilai guru');
+        }
         
     }
 }
