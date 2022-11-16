@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KepalaSekolah\AhpController as KSAhpController;
 use App\Http\Controllers\KepalaSekolah\TopsisController as KSTopsisController;
+use App\Http\Controllers\KepalaYayasan\TopsisController as KYTopsisController;
 use App\Http\Controllers\KepalaYayasan\AhpController as KYAhpController;
 use Illuminate\Support\Facades\Route;
 
@@ -82,14 +83,22 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
                 });
         });
 
-    Route::controller(KYAhpController::class)
-        ->prefix('kepala-yayasan')
+        Route::prefix('kepala-yayasan')
         ->as('kepalaYayasan.')
         ->group(function () {
-            Route::get('ahp', 'ahp')->name('ahp');
-            Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
-            Route::post('ahp', 'ahpProcess')->name('ahp.process');
+            Route::controller(KYAhpController::class)
+                ->group(function () {
+                    Route::get('ahp', 'ahp')->name('ahp');
+                    Route::get('ahp-perbandingan', 'ahpPerbandingan')->name('ahp.perbandingan');
+                    Route::post('ahp', 'ahpProcess')->name('ahp.process');
+                });
+
+            Route::controller(KYTopsisController::class)
+                ->group(function () {
+                    Route::get('topsis', 'index')->name('topsis');
+                });
         });
+        
 });
 
 Route::get('/', function () {

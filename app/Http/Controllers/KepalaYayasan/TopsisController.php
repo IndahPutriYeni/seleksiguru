@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\KepalaSekolah;
+namespace App\Http\Controllers\KepalaYayasan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Topsis;
@@ -10,9 +10,9 @@ class TopsisController extends Controller
 {
     public function index()
     {
-        $result = TopsisService::process('kepala_sekolah');
+        $result = TopsisService::process('kepala_yayasan');
 
-        Topsis::updateOrCreate(['tipe' => 'kepala_sekolah'], $result);
+        Topsis::updateOrCreate(['tipe' => 'yayasan'], $result);
 
         return view('Admin.methode.topsis', compact('result'));
     }

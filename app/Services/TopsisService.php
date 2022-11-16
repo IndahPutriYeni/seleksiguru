@@ -7,15 +7,15 @@ use App\Models\NilaiPerbandingan;
 
 class TopsisService
 {
-    public static function process()
+    public static function process($jabatan)
     {
         $result = [];
         $nilai = NilaiAlternatif::with(['guru', 'user', 'kriteria'])
-            ->where('jabatan', 'kepala_sekolah')
+            ->where('jabatan', $jabatan)
             ->get()
             ->toArray();
 
-        $bobot = NilaiPerbandingan::where('tipe', 'kepala_sekolah')
+        $bobot = NilaiPerbandingan::where('tipe', $jabatan)
             ->first()
             ->toArray();
         $bobot = $bobot['rata_eigen'];
@@ -113,6 +113,7 @@ class TopsisService
 
         return $result;
     }
+    
 
     protected static function hitungPembagi(array $data, string $key)
     {
