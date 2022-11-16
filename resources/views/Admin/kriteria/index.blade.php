@@ -1,16 +1,16 @@
 @extends('Admin.layout')
 @section('title', 'Index Admin')
 @section('content')
-  <div class="mb-12 px-4 md:ml-0 mt-8">
-    <div class="relative flex flex-col min-w-0 break-words mb-6 shadow-lg rounded bg-white">
-      <div class="rounded-t mb-0 px-4 py-3 border-0">
+  <div class="px-4 mt-8 mb-12 md:ml-0">
+    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white rounded shadow-lg">
+      <div class="px-4 py-3 mb-0 border-0 rounded-t">
         <div class="flex flex-wrap items-center">
-          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 class="font-semibold text-lg text-slate-700">
+          <div class="relative flex-1 flex-grow w-full max-w-full px-4">
+            <h3 class="text-lg font-semibold text-slate-700">
               Data Kriteria
             </h3>
           </div>
-          <a href="{{ route('admin.addKategori') }}" class="p-4 bg-indigo-500 text-white hover:bg-indigo-600 rounded">Add
+          <a href="{{ route('admin.addKategori') }}" class="p-4 text-white bg-indigo-500 rounded hover:bg-indigo-600">Add
             Kriteria</a>
 
         </div>
@@ -21,23 +21,23 @@
           <thead>
             <tr>
               <th
-                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                class="px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid whitespace-nowrap bg-slate-50 text-slate-500 border-slate-100">
                 Nama
               </th>
               <th
-                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                class="px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid whitespace-nowrap bg-slate-50 text-slate-500 border-slate-100">
                 Kode
               </th>
               <th
-                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                class="px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid whitespace-nowrap bg-slate-50 text-slate-500 border-slate-100">
                 Bobot
               </th>
               <th
-                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                class="px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid whitespace-nowrap bg-slate-50 text-slate-500 border-slate-100">
                 Atribut
               </th>
               <th
-                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                class="px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid whitespace-nowrap bg-slate-50 text-slate-500 border-slate-100">
                 Action
               </th>
             </tr>
@@ -46,23 +46,31 @@
             @foreach ($kriteria as $cat)
               <tr>
                 <th
-                  class="border-t-0 px-6 align-middle border-l-0 border-r-1 whitespace-nowrap p-4 text-left flex items-center">
+                  class="flex items-center p-4 px-6 text-left align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   <span class="ml-3 font-bold text-slate-600">
                     {{ $cat->name }}
                   </span>
                 </th>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-1 whitespace-nowrap p-4">
+                <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   {{ $cat->kode }}
                 </td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-1 whitespace-nowrap p-4">
+                <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   {{ $cat->bobot }}
                 </td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-1 whitespace-nowrap p-4">
+                <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   {{ $cat->atribut }}
                 </td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-1 whitespace-nowrap p-4">
+                <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   <a href="{{ route('admin.editKategori', $cat->id) }}"
                     class="px-4 py-2 text-indigo-500 hover:text-indigo-600">Edit</a>
+                  <form method="{{ route('admin.deleteKategori', $cat->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-4 py-2 text-indigo-500 hover:text-indigo-600">
+                      Hapus
+                    </button>
+                  </form>
+
                 </td>
               </tr>
             @endforeach
