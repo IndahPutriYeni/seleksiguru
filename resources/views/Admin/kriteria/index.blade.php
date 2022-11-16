@@ -63,7 +63,7 @@
                 <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   <a href="{{ route('admin.editKategori', $cat->id) }}"
                     class="px-4 py-2 text-indigo-500 hover:text-indigo-600">Edit</a>
-                  <form method="{{ route('admin.deleteKategori', $cat->id) }}">
+                  <form method="POST" action="{{ route('admin.deleteKategori', $cat->id) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="px-4 py-2 text-indigo-500 hover:text-indigo-600">

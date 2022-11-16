@@ -26,7 +26,7 @@ class KategoriController extends Controller
             'kode' => 'required',
             'atribut' => 'required'
         ]);
-        Kriteria::create($validated);
+        Kriteria::create(['name'=>$request->name, 'kode'=> $request->kode, 'atribut'=>$request->atribut, 'bobot'=>0]);
         return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Tambah Kategori');
     }
 
@@ -54,7 +54,7 @@ class KategoriController extends Controller
 
     public function hapusKategori(Request $request)
     {
-        $cat = Kategori::find($request->id);
+        $cat = Kriteria::find($request->id);
         $cat->delete();
         return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Hapus Kategori');
     }
