@@ -7,19 +7,19 @@
     <table class="table p-4 text-center border-collapse">
       <thead>
         <tr class="border-b">
-          <th class="w-64 text-blue-500">Kriteria</th>
-          <th class="w-64 text-blue-500">Pengalaman</th>
-          <th class="w-64 text-blue-500">Tahfiz</th>
-          <th class="w-64 text-blue-500">Pendidikan</th>
-          <th class="w-64 text-blue-500">Kepribadian</th>
-          <th class="w-64 text-blue-500">Mengajar</th>
-          <th class="w-64 text-blue-500">Jumlah</th>
-          <th class="w-64 text-blue-500">Rata-rata</th>
+          <th class="w-64 text-sky-800">Kriteria</th>
+          <th class="w-64 text-sky-800">Pengalaman</th>
+          <th class="w-64 text-sky-800">Tahfiz</th>
+          <th class="w-64 text-sky-800">Pendidikan</th>
+          <th class="w-64 text-sky-800">Kepribadian</th>
+          <th class="w-64 text-sky-800">Mengajar</th>
+          <th class="w-64 text-sky-800">Jumlah</th>
+          <th class="w-64 text-sky-800">Rata-rata</th>
         </tr class="border-b">
       </thead>
       <tbody>
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Pengalaman</th>
+          <th class="py-2 text-left border-r text-sky-800">Pengalaman</th>
           <td class="border-r">{{ round($kriteria['pengalaman_pengalaman'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['pengalaman_tahfiz'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['pengalaman_pendidikan'], 2) }}</td>
@@ -29,7 +29,7 @@
           <td class="border-r">{{ round($perbandingan['rata_eigen']['pengalaman'], 2) }}</td>
         </tr class="border-b">
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Tahfiz</th>
+          <th class="py-2 text-left border-r text-sky-800">Tahfiz</th>
           <td class="border-r">{{ round($kriteria['tahfiz_pengalaman'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['tahfiz_tahfiz'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['tahfiz_pendidikan'], 2) }}</td>
@@ -39,7 +39,7 @@
           <td class="border-r">{{ round($perbandingan['rata_eigen']['tahfiz'], 2) }}</td>
         </tr class="border-b">
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Pendidikan</th>
+          <th class="py-2 text-left border-r text-sky-800">Pendidikan</th>
           <td class="border-r">{{ round($kriteria['pendidikan_pengalaman'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['pendidikan_tahfiz'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['pendidikan_pendidikan'], 2) }}</td>
@@ -49,7 +49,7 @@
           <td class="border-r">{{ round($perbandingan['rata_eigen']['pendidikan'], 2) }}</td>
         </tr class="border-b">
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Kepribadian</th>
+          <th class="py-2 text-left border-r text-sky-800">Kepribadian</th>
           <td class="border-r">{{ round($kriteria['kepribadian_pengalaman'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['kepribadian_tahfiz'], 2) }}</td>
           <td class="border-r">{{ round($kriteria['kepribadian_pendidikan'], 2) }}</td>
@@ -59,7 +59,7 @@
           <td class="border-r">{{ round($perbandingan['rata_eigen']['kepribadian'], 2) }}</td>
         </tr class="border-b">
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Mengajar</th>
+          <th class="py-2 text-left border-r text-sky-800">Mengajar</th>
           <td class="border-r">{{ $kriteria['mengajar_pengalaman'] }}</td>
           <td class="border-r">{{ $kriteria['mengajar_tahfiz'] }}</td>
           <td class="border-r">{{ $kriteria['mengajar_pendidikan'] }}</td>
@@ -69,7 +69,7 @@
           <td class="border-r">{{ $perbandingan['rata_eigen']['mengajar'] }}</td>
         </tr class="border-b">
         <tr class="border-b">
-          <th class="py-2 text-left text-blue-500 border-r">Jumlah</th>
+          <th class="py-2 text-left border-r text-sky-800">Jumlah</th>
           <td class="border-r">{{ $perbandingan['jumlah_kriteria']['pengalaman'] }}</td>
           <td class="border-r">{{ $perbandingan['jumlah_kriteria']['tahfiz'] }}</td>
           <td class="border-r">{{ $perbandingan['jumlah_kriteria']['pendidikan'] }}</td>
