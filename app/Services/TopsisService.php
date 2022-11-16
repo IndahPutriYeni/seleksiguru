@@ -5,19 +5,21 @@ namespace App\Services;
 use App\Models\NilaiAlternatif;
 use App\Models\NilaiPerbandingan;
 
-class TopsisService {
-    public static function process() {
+class TopsisService
+{
+    public static function process()
+    {
         $result = [];
         $nilai = NilaiAlternatif::with(['guru', 'user', 'kriteria'])
             ->where('jabatan', 'kepala_sekolah')
             ->get()
             ->toArray();
-            
+
         $bobot = NilaiPerbandingan::where('tipe', 'kepala_sekolah')
             ->first()
             ->toArray();
         $bobot = $bobot['rata_eigen'];
-        
+
         $data = [];
         foreach ($nilai as $item) {
             $data[$item['user']['name']][$item['kriteria']['name']] = $item['nilai'];
@@ -58,7 +60,7 @@ class TopsisService {
         $min['pendidikan'] = min(array_column($data, 'Pendidikan'));
         $min['tahfiz'] = min(array_column($data, 'Tahfiz'));
         $min['kepribadian'] = min(array_column($data, 'Kepribadian'));
-        
+
         $max['pengalaman'] = max(array_column($data, 'Pengalaman'));
         $max['mengajar'] = max(array_column($data, 'Mengajar'));
         $max['pendidikan'] = max(array_column($data, 'Pendidikan'));
@@ -102,9 +104,13 @@ class TopsisService {
         $result['preferensi'] = $preferensi;
 
         // ranking
+        // usort($preferensi, function ($a, $b) {
+        //     return $a <=> $b;
+        // });
         asort($preferensi);
+        $preferensi = array_reverse($preferensi);
         $result['ranking'] = $preferensi;
-        
+
         return $result;
     }
 
