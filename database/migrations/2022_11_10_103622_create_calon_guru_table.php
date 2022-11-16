@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('calon_guru', function (Blueprint $table) {
-            $table->foreignId('id')->constrained('users');
+            $table->foreignId('id')->constrained('users')->onDelete('cascade');
             $table->string('nik')->nullable();
             $table->string('no_kk')->nullable();
             $table->text('alamat')->nullable();

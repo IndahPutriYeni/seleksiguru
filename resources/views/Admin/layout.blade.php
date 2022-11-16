@@ -14,7 +14,8 @@
 <body class="antialiased">
   <nav
     class="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
-    <div class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap">
+    <div
+      class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap">
       <button
         class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden"
         type="button" onclick="toggleNavbar('example-collapse-sidebar')">
@@ -54,21 +55,24 @@
 
         <ul class="flex flex-col list-none md:flex-col md:min-w-full">
           <li class="items-center">
-            <a href="{{ route('admin.guru.index') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-pink-600">
+            <a href="{{ route('admin.guru.index') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-pink-600">
               <i class="mr-2 text-sm opacity-75 fas fa-user"></i>
               List Guru
             </a>
           </li>
 
           <li class="items-center">
-            <a href="{{ route('admin.kategori') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+            <a href="{{ route('admin.kategori') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-list text-slate-500"></i>
               Kriteria
             </a>
           </li>
 
           <li class="items-center">
-            <a href="{{ route('admin.user') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+            <a href="{{ route('admin.user') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-users text-slate-500"></i>
               User
             </a>
@@ -98,7 +102,8 @@
         <!-- Navigation -->
         <ul>
           <li class="items-center">
-            <a href="{{ route('admin.kepalaSekolah.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+            <a href="{{ route('admin.kepalaSekolah.ahp') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
               AHP
             </a>
@@ -130,7 +135,8 @@
         <!-- Navigation -->
         <ul>
           <li class="items-center">
-            <a href="{{ route('admin.kepalaYayasan.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+            <a href="{{ route('admin.kepalaYayasan.ahp') }}"
+              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
               AHP
             </a>
@@ -167,7 +173,7 @@
     </div>
   </nav>
 
-  <div class="absolute w-screen left-[20%]">
+  <div class="absolute md:ml-64">
     @yield('content')
   </div>
   @if (session()->has('success'))

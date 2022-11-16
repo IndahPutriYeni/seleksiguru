@@ -3,63 +3,63 @@
 @section('title', 'AHP Perbandingan - Kepala Sekolah')
 
 @section('content')
-  <div class="flex flex-col m-10 bg-gray-100">
-    <table class="table text-center border-collapse">
+  <div class="flex flex-col m-10 bg-gray-100 p-4">
+    <table class="table text-center border-collapse p-4">
       <thead>
         <tr>
-          <th>Kriteria</th>
-          <th>Pengalaman</th>
-          <th>Tahfiz</th>
-          <th>Pendidikan</th>
-          <th>Kepribadian</th>
-          <th>Mengajar</th>
-          <th>Jumlah</th>
-          <th>Rata-rata</th>
+          <th class="w-64">Kriteria</th>
+          <th class="w-64">Pengalaman</th>
+          <th class="w-64">Tahfiz</th>
+          <th class="w-64">Pendidikan</th>
+          <th class="w-64">Kepribadian</th>
+          <th class="w-64">Mengajar</th>
+          <th class="w-64">Jumlah</th>
+          <th class="w-64">Rata-rata</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>Pengalaman</th>
-          <td>{{ $kriteria['pengalaman_pengalaman'] }}</td>
-          <td>{{ $kriteria['pengalaman_tahfiz'] }}</td>
-          <td>{{ $kriteria['pengalaman_pendidikan'] }}</td>
-          <td>{{ $kriteria['pengalaman_kepribadian'] }}</td>
-          <td>{{ $kriteria['pengalaman_mengajar'] }}</td>
-          <td>{{ $perbandingan['jumlah_eigen']['pengalaman'] }}</td>
-          <td>{{ $perbandingan['rata_eigen']['pengalaman'] }}</td>
+          <th class="text-left py-2">Pengalaman</th>
+          <td>{{ round($kriteria['pengalaman_pengalaman'], 2) }}</td>
+          <td>{{ round($kriteria['pengalaman_tahfiz'], 2) }}</td>
+          <td>{{ round($kriteria['pengalaman_pendidikan'], 2) }}</td>
+          <td>{{ round($kriteria['pengalaman_kepribadian'], 2) }}</td>
+          <td>{{ round($kriteria['pengalaman_mengajar'], 2) }}</td>
+          <td>{{ round($perbandingan['jumlah_eigen']['pengalaman'], 2) }}</td>
+          <td>{{ round($perbandingan['rata_eigen']['pengalaman'], 2) }}</td>
         </tr>
         <tr>
-          <th>Tahfiz</th>
-          <td>{{ $kriteria['tahfiz_pengalaman'] }}</td>
-          <td>{{ $kriteria['tahfiz_tahfiz'] }}</td>
-          <td>{{ $kriteria['tahfiz_pendidikan'] }}</td>
-          <td>{{ $kriteria['tahfiz_kepribadian'] }}</td>
-          <td>{{ $kriteria['tahfiz_mengajar'] }}</td>
-          <td>{{ $perbandingan['jumlah_eigen']['tahfiz'] }}</td>
-          <td>{{ $perbandingan['rata_eigen']['tahfiz'] }}</td>
+          <th class="text-left py-2">Tahfiz</th>
+          <td>{{ round($kriteria['tahfiz_pengalaman'], 2) }}</td>
+          <td>{{ round($kriteria['tahfiz_tahfiz'], 2) }}</td>
+          <td>{{ round($kriteria['tahfiz_pendidikan'], 2) }}</td>
+          <td>{{ round($kriteria['tahfiz_kepribadian'], 2) }}</td>
+          <td>{{ round($kriteria['tahfiz_mengajar'], 2) }}</td>
+          <td>{{ round($perbandingan['jumlah_eigen']['tahfiz'], 2) }}</td>
+          <td>{{ round($perbandingan['rata_eigen']['tahfiz'], 2) }}</td>
         </tr>
         <tr>
-          <th>Pendidikan</th>
-          <td>{{ $kriteria['pendidikan_pengalaman'] }}</td>
-          <td>{{ $kriteria['pendidikan_tahfiz'] }}</td>
-          <td>{{ $kriteria['pendidikan_pendidikan'] }}</td>
-          <td>{{ $kriteria['pendidikan_kepribadian'] }}</td>
-          <td>{{ $kriteria['pendidikan_mengajar'] }}</td>
-          <td>{{ $perbandingan['jumlah_eigen']['pendidikan'] }}</td>
-          <td>{{ $perbandingan['rata_eigen']['pendidikan'] }}</td>
+          <th class="text-left py-2">Pendidikan</th>
+          <td>{{ round($kriteria['pendidikan_pengalaman'], 2) }}</td>
+          <td>{{ round($kriteria['pendidikan_tahfiz'], 2) }}</td>
+          <td>{{ round($kriteria['pendidikan_pendidikan'], 2) }}</td>
+          <td>{{ round($kriteria['pendidikan_kepribadian'], 2) }}</td>
+          <td>{{ round($kriteria['pendidikan_mengajar'], 2) }}</td>
+          <td>{{ round($perbandingan['jumlah_eigen']['pendidikan'], 2) }}</td>
+          <td>{{ round($perbandingan['rata_eigen']['pendidikan'], 2) }}</td>
         </tr>
         <tr>
-          <th>Kepribadian</th>
-          <td>{{ $kriteria['kepribadian_pengalaman'] }}</td>
-          <td>{{ $kriteria['kepribadian_tahfiz'] }}</td>
-          <td>{{ $kriteria['kepribadian_pendidikan'] }}</td>
-          <td>{{ $kriteria['kepribadian_kepribadian'] }}</td>
-          <td>{{ $kriteria['kepribadian_mengajar'] }}</td>
-          <td>{{ $perbandingan['jumlah_eigen']['kepribadian'] }}</td>
-          <td>{{ $perbandingan['rata_eigen']['kepribadian'] }}</td>
+          <th class="text-left py-2">Kepribadian</th>
+          <td>{{ round($kriteria['kepribadian_pengalaman'], 2) }}</td>
+          <td>{{ round($kriteria['kepribadian_tahfiz'], 2) }}</td>
+          <td>{{ round($kriteria['kepribadian_pendidikan'], 2) }}</td>
+          <td>{{ round($kriteria['kepribadian_kepribadian'], 2) }}</td>
+          <td>{{ round($kriteria['kepribadian_mengajar'], 2) }}</td>
+          <td>{{ round($perbandingan['jumlah_eigen']['kepribadian'], 2) }}</td>
+          <td>{{ round($perbandingan['rata_eigen']['kepribadian'], 2) }}</td>
         </tr>
         <tr>
-          <th>Mengajar</th>
+          <th class="text-left py-2">Mengajar</th>
           <td>{{ $kriteria['mengajar_pengalaman'] }}</td>
           <td>{{ $kriteria['mengajar_tahfiz'] }}</td>
           <td>{{ $kriteria['mengajar_pendidikan'] }}</td>
@@ -69,7 +69,7 @@
           <td>{{ $perbandingan['rata_eigen']['mengajar'] }}</td>
         </tr>
         <tr>
-          <th>Jumlah</th>
+          <th class="text-left py-2">Jumlah</th>
           <td>{{ $perbandingan['jumlah_kriteria']['pengalaman'] }}</td>
           <td>{{ $perbandingan['jumlah_kriteria']['tahfiz'] }}</td>
           <td>{{ $perbandingan['jumlah_kriteria']['pendidikan'] }}</td>

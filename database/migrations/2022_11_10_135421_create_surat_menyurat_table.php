@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('surat_menyurat', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('type');
             $table->string('image');
         });

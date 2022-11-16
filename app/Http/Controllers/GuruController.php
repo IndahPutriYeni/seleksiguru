@@ -16,8 +16,12 @@ class GuruController extends Controller
         $guruCount = User::where('jabatan', 'calon_guru')->count();
         $kriteria = Kriteria::all();
         $countKriteria = Kriteria::all()->count();
-        
-        return view('Admin.guru.list', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
+        if(auth()->user()->jabatan === 'kepala_sekolah'){
+            return view('Admin.guru.kepsek', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
+        }elseif((auth()->user()->jabatan === 'kepala_yayasan')){
+            return view('Admin.guru.yayasan', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
+        }
+        return view('Admin.guru.index', compact('dataGuru'   ));
     }
 
     public function addNilai(Request $request)
