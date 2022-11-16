@@ -7,7 +7,7 @@
     <div class="flex flex-col gap-5 p-4 bg-white">
       <span class="text-lg font-bold">Ternomalisasi</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th class="px-2 py-4 border">Nama</th>
@@ -36,7 +36,7 @@
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Ternomalisasi Bobot</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th class="px-2 py-4 border">Nama</th>
@@ -65,7 +65,7 @@
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Min Max</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th class="px-2 py-4 border"></th>
@@ -101,7 +101,7 @@
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Solusi Ideal</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th class="px-2 py-4 border">Nama</th>
@@ -124,7 +124,7 @@
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Preferensi</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th class="px-2 py-4 border">Nama</th>
@@ -145,10 +145,10 @@
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Ranking</span>
 
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
-            <th class="px-2 py-4 border">No.</th>
+            <th class="px-2 py-4 border">Ranking</th>
             <th class="px-2 py-4 border">Nama</th>
             <th class="px-2 py-4 border">Nilai</th>
           </tr>
