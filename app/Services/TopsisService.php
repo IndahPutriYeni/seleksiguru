@@ -104,16 +104,12 @@ class TopsisService
         $result['preferensi'] = $preferensi;
 
         // ranking
-        // usort($preferensi, function ($a, $b) {
-        //     return $a <=> $b;
-        // });
         asort($preferensi);
         $preferensi = array_reverse($preferensi);
         $result['ranking'] = $preferensi;
 
         return $result;
     }
-    
 
     protected static function hitungPembagi(array $data, string $key)
     {

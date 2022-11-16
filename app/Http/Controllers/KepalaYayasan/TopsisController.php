@@ -12,7 +12,7 @@ class TopsisController extends Controller
     {
         $result = TopsisService::process('kepala_yayasan');
 
-        Topsis::updateOrCreate(['tipe' => 'yayasan'], $result);
+        Topsis::updateOrCreate(['tipe' => 'kepala_yayasan'], $result);
 
         return view('Admin.methode.topsis', compact('result'));
     }

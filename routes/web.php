@@ -6,8 +6,8 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KepalaSekolah\AhpController as KSAhpController;
 use App\Http\Controllers\KepalaSekolah\TopsisController as KSTopsisController;
-use App\Http\Controllers\KepalaYayasan\TopsisController as KYTopsisController;
 use App\Http\Controllers\KepalaYayasan\AhpController as KYAhpController;
+use App\Http\Controllers\KepalaYayasan\TopsisController as KYTopsisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,7 +83,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
                 });
         });
 
-        Route::prefix('kepala-yayasan')
+    Route::prefix('kepala-yayasan')
         ->as('kepalaYayasan.')
         ->group(function () {
             Route::controller(KYAhpController::class)
@@ -98,7 +98,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
                     Route::get('topsis', 'index')->name('topsis');
                 });
         });
-        
+
 });
 
 Route::get('/', function () {
