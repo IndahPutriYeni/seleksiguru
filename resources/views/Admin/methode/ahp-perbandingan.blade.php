@@ -80,9 +80,10 @@
     </table>
 
     <div class="flex flex-col mt-5">
-      <span>Lambda Max = {{ $perbandingan['lambda_max'] }}</span>
-      <span>CI = {{ $perbandingan['ci'] }}</span>
-      <span>CR = {{ $perbandingan['cr'] }} {{ $perbandingan['cr'] > 1 ? 'TIDAK KONSISTEN' : 'KONSISTEN' }}</span>
+      <div><span class="font-bold">Lambda Max</span><span> = {{ $perbandingan['lambda_max'] }}</span></div>
+      <div><span class="font-bold">CI</span><span> = {{ $perbandingan['ci'] }}</span></div>
+      <div><span class="font-bold">CR</span><span> = {{ $perbandingan['cr'] }}
+          {{ $perbandingan['cr'] > 1 ? 'TIDAK KONSISTEN' : 'KONSISTEN' }}</span></div>
     </div>
   </div>
 @endsection
