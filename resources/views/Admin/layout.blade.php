@@ -23,7 +23,7 @@
       </button>
       <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-left uppercase md:block md:pb-2 text-slate-600 whitespace-nowrap"
         href="{{ route('admin.index') }}">
-        Admin
+        {{ auth()->user()->name }}
       </a>
       <div
         class="absolute top-0 left-0 right-0 z-40 items-center flex-1 hidden h-auto overflow-x-hidden overflow-y-auto rounded shadow md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none"
@@ -41,7 +41,7 @@
             <div class="">
               <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-right uppercase md:block md:pb-2 text-slate-600 whitespace-nowrap"
                 href="{{ route('admin.index') }}">
-                Admin
+                {{ auth()->user()->name }}
               </a>
             </div>
           </div>
@@ -49,7 +49,7 @@
 
         <!-- Heading -->
         <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
-          Admin
+          Menu
         </h6>
         <!-- Navigation -->
 
@@ -101,13 +101,15 @@
         </h6>
         <!-- Navigation -->
         <ul>
-          <li class="items-center">
-            <a href="{{ route('admin.kepalaSekolah.ahp') }}"
-              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
-              <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
-              AHP
-            </a>
-          </li>
+          @if (auth()->user()->jabatan === 'kepala_sekolah')
+            <li class="items-center">
+              <a href="{{ route('admin.kepalaSekolah.ahp') }}"
+                class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+                <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
+                AHP
+              </a>
+            </li>
+          @endif
 
           <li class="items-center">
             <a href="{{ route('admin.kepalaSekolah.ahp.perbandingan') }}"
@@ -134,14 +136,15 @@
         </h6>
         <!-- Navigation -->
         <ul>
-          <li class="items-center">
-            <a href="{{ route('admin.kepalaYayasan.ahp') }}"
-              class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
-              <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
-              AHP
-            </a>
-          </li>
-
+          @if (auth()->user()->jabatan === 'kepala_yayasan')
+            <li class="items-center">
+              <a href="{{ route('admin.kepalaYayasan.ahp') }}"
+                class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
+                <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
+                AHP
+              </a>
+            </li>
+          @endif
           <li class="items-center">
             <a href="{{ route('admin.kepalaYayasan.ahp.perbandingan') }}"
               class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
@@ -183,13 +186,33 @@
   <div class="w-full">
     @yield('content')
   </div>
+  @if (session()->has('error'))
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'error',
+        title: '{{ session()->get('error') }}'
+      })
+    </script>
+  @endif
   @if (session()->has('success'))
     <script>
       const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 5000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
