@@ -20,6 +20,7 @@ class Topsis extends Model
         'solusi_ideal_plus',
         'preferensi',
         'ranking',
+        'tipe',
     ];
 
     protected $casts = [
