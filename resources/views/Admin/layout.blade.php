@@ -186,7 +186,7 @@
   <div class="w-full">
     @yield('content')
   </div>
-  @if (session()->has('success'))
+  @if (session()->has('error'))
     <script>
       const Toast = Swal.mixin({
         toast: true,

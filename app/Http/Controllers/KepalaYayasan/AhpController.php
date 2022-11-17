@@ -12,6 +12,9 @@ class AhpController extends Controller
 {
     public function ahp()
     {
+        if(auth()->user()->jabatan!== 'kepala_yayasan'){
+            return redirect()->route('admin.index')->with('error', 'Anda tiak punya akses ke portal nilai yayasan');
+         }
         $postUrl = route('admin.kepalaYayasan.ahp.process');
         $kriteria = [
             'tahfiz_pengalaman' => ['Tahfiz', 'Pengalaman'],
@@ -36,10 +39,10 @@ class AhpController extends Controller
     {
         $countKriteria = NilaiKriteria::where('tipe', 'kepala_yayasan')->count();
         if ($countKriteria === 0) {
-            if(auth()->user()->jabatan!== 'kepala_sekolah'){
-                return redirect()->route('admin.kepalaYayasan.ahp');
+            if(auth()->user()->jabatan!== 'kepala_yayasan'){
+               return redirect()->route('admin.index')->with('error', 'Nilai AHP Kepala Yayasan masih kosong');
             }
-            return redirect()->route('admin.index')->with('error', 'Nilai AHP Kepala Yayasan masih kosong');
+            return redirect()->route('admin.kepalaYayasan.ahp');
         }
         $kriteria = NilaiKriteria::where('tipe', 'kepala_yayasan')
             ->get()
