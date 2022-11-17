@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="flex flex-col gap-10 p-6 my-10 bg-white">
-    <div class="flex flex-col gap-5 p-4 bg-white">
+    {{-- <div class="flex flex-col gap-5 p-4 bg-white">
       <span class="text-lg font-bold">Ternomalisasi</span>
 
       <table class="table text-center">
@@ -140,7 +140,7 @@
           @endforeach
         </tbody>
       </table>
-    </div>
+    </div> --}}
 
     <div class="flex flex-col gap-5">
       <span class="text-lg font-bold">Ranking</span>
@@ -158,7 +158,7 @@
             <tr>
               <td class="px-2 py-4 border">{{ $loop->index + 1 }}</td>
               <td class="px-2 py-4 border">{{ $key }}</td>
-              <td class="px-2 py-4 border">{{ $item }}</td>
+              <td class="px-2 py-4 border">{{ round($item, 2) }}</td>
             </tr>
           @endforeach
         </tbody>
