@@ -34,6 +34,13 @@ class AhpController extends Controller
 
     public function ahpPerbandingan()
     {
+        $countKriteria = NilaiKriteria::where('tipe', 'kepala_yayasan')->count();
+        if ($countKriteria === 0) {
+            if(auth()->user()->jabatan!== 'kepala_sekolah'){
+                return redirect()->route('admin.kepalaYayasan.ahp');
+            }
+            return redirect()->route('admin.index')->with('error', 'Nilai AHP Kepala Yayasan masih kosong');
+        }
         $kriteria = NilaiKriteria::where('tipe', 'kepala_yayasan')
             ->get()
             ->pluck('nilai', 'kode')
@@ -41,11 +48,6 @@ class AhpController extends Controller
         $perbandingan = NilaiPerbandingan::where('tipe', 'kepala_yayasan')
             ->first()
             ->toArray();
-
-        if (count($kriteria) === 0) {
-            return redirect()->route('admin.kepalaYayasan.ahp');
-        }
-
         return view('Admin.methode.ahp-perbandingan', compact('kriteria', 'perbandingan'));
     }
 

@@ -43,6 +43,12 @@
             @if (auth()->user()->isAdmin)
               <li class="flex items-center">
                 <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
+                  href="{{ route('admin.index') }}"><i
+                    class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
+                  Dashboard</a>
+              </li>
+              <li class="flex items-center">
+                <a class="lg:text-white lg:hover:text-indigo-600 text-white px-3 py-4 lg:py-2 flex items-center text-xs font-bold"
                   href="{{ route('admin.user') }}"><i
                     class="lg:text-slate-200 text-slate-600 far fa-file-alt text-lg leading-lg mr-2"></i>
                   User</a>
