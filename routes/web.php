@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CalonGuruController;
+use App\Http\Controllers\CopelandScoreController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KepalaSekolah\AhpController as KSAhpController;
@@ -99,6 +100,11 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
                 });
         });
 
+    Route:: as ('copeland-score.')
+        ->group(function () {
+            Route::get('copeland-score', [CopelandScoreController::class, 'index'])
+                ->name('index');
+        });
 });
 
 Route::get('/', function () {
