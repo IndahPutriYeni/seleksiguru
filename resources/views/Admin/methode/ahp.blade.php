@@ -23,7 +23,6 @@
           <span class="w-20">{{ $value[1] }}</span>
         </div>
       @endforeach
-
       <div class="flex items-center justify-center">
         <button type="submit" class="p-2 mt-5 text-white bg-green-400 rounded-md">Simpan Kriteria</button>
       </div>
