@@ -2,23 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topsis;
+use App\Models\Copeland;
+use App\Services\CopelandService;
 
 class CopelandScoreController extends Controller
 {
     public function index()
     {
-        $topsisKS = Topsis::where('tipe', 'kepala_sekolah')
-            ->first()
-            ->toArray();
-        $rankingKS = $topsisKS['ranking'];
+        $result = CopelandService::process();
+        // dd($result);
 
-        $topsisKY = Topsis::where('tipe', 'kepala_yayasan')
-            ->first()
-            ->toArray();
-        $rankingKY = $topsisKY['ranking'];
+        // ambil bobot
+        $allBobot = array_values($result);
+        $allBobot = array_unique($allBobot);
+        // fix index
+        $allBobot = array_values($allBobot);
 
-        dump($rankingKS);
-        dd($rankingKY);
+        foreach ($result as $key => $value) {
+            $ranking = -1;
+            foreach ($allBobot as $index => $bobot) {
+                if ((double) $bobot === (double) $value) {
+                    $ranking = $index + 1;
+                    break;
+                }
+            }
+
+            Copeland::updateOrCreate([
+                'name' => $key,
+            ], [
+                'bobot' => $value,
+                'ranking' => $ranking,
+            ]);
+        }
+
+        $copeland = Copeland::all()
+            ->toArray();
+
+        return view('Admin.methode.copeland', compact('copeland'));
     }
 }
