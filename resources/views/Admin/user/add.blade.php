@@ -7,7 +7,7 @@
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
             <h3 class="font-semibold text-lg text-slate-700">
-              Edit Kriteria
+              Tambah User
             </h3>
           </div>
 
@@ -24,7 +24,7 @@
       @endif
       <div class="block w-full overflow-x-auto p-8">
         <!-- Projects table -->
-        <form method="POST" action="{{ route('admin.editUser') }}">
+        <form method="POST" action="{{ route('admin.postUser') }}">
           @csrf
           @method('PUT')
           <div class="block my-4">
@@ -50,13 +50,12 @@
             <select
               class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               name="jabatan" required>
+              <option value="calon_guru">Calon Guru</option>
               <option value="kepala_sekolah">Kepala Sekolah</option>
               <option value="kepala_yayasan">Kepala Yayasan</option>
               <option value="admin">Admin</option>
             </select>
-            <input type="text"
-              class="border-0 px-3 py-3 placeholder-slate-500 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              name="jabatan" id="jabatan" />
+
           </div>
           <button type="submit" class="p-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Simpan</button>
         </form>
