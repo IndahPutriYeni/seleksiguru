@@ -30,7 +30,7 @@ class GuruController extends Controller
     public function listGuru()
     {
         $guru = User::where('jabatan', 'calon_guru')->get();
-        $dataGuru = CalonGuru::all();
+        $dataGuru = CalonGuru::paginate(5);
         $guruCount = User::where('jabatan', 'calon_guru')->count();
         $kriteria = Kriteria::all();
         $countKriteria = Kriteria::all()->count();
@@ -71,5 +71,15 @@ class GuruController extends Controller
             return \redirect(route('admin.guru.yayasan'))->withSuccess('Berhasil Mengubah nilai guru');
         }
         
+    }
+
+    public function hapusGuru(Request $req){
+        $id = $req->id;
+        $guru = User::find($id);
+        if($guru->delete()){
+            return redirect(route('admin.guru.index'))->withSuccess('Berhasil hapus '. $guru->name);
+        }else{
+            return reirect(route('admin.guru.index'))->with('error', 'Gagal menghapus guru terseut');
+        }
     }
 }

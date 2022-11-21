@@ -35,4 +35,12 @@ class CalonGuru extends Model
     {
         return $this->hasMany(SuratMenyurat::class, 'user_id', 'id');
     }
+
+    
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($user) { 
+             $user->surat_menyurat()->delete();
+        });
+    }
 }
