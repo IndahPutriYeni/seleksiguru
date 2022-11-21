@@ -55,7 +55,7 @@
                   {{ $cat->kode }}
                 </td>
                 <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
-                  {{ $cat->bobot }}
+                  {{ round($cat->bobot, 2) }}
                 </td>
                 <td class="p-4 px-6 align-middle border-t-0 border-l-0 border-r-1 whitespace-nowrap">
                   {{ $cat->atribut }}

@@ -10,7 +10,10 @@ class KategoriController extends Controller
     //
     public function listKategori()
     {
-        $kriteria = Kriteria::all();
+        $user = auth()->user();
+        $kriteria = Kriteria::where('tipe', $user->jabatan)
+            ->get();
+
         return view('Admin.kriteria.index', compact('kriteria'));
     }
 
@@ -21,13 +24,20 @@ class KategoriController extends Controller
 
     public function postKategori(Request $request)
     {
+        $user = auth()->user();
         $validated = $request->validate([
             'name' => 'required',
             'kode' => 'required',
             'atribut' => 'required'
         ]);
-        Kriteria::create(['name'=>$request->name, 'kode'=> $request->kode, 'atribut'=>$request->atribut, 'bobot'=>0]);
-        return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Tambah Kategori');
+        Kriteria::create([
+            'name'=>$request->name, 
+            'kode'=> $request->kode, 
+            'atribut'=>$request->atribut,
+            'tipe' => $user->jabatan,
+            'bobot'=>0,
+        ]);
+        return redirect()->route('admin.kategori')->withSuccess('Berhasil Tambah Kategori');
     }
 
     public function editKategori(Request $request)
@@ -48,14 +58,15 @@ class KategoriController extends Controller
         $kategori->name = $request->name;
         $kategori->kode = $request->kode;
         $kategori->atribut = $request->atribut;
+        $kategori->jabatan = $request->jabatan;
         $kategori->save();
-        return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Ubah Kategori');
+        return redirect()->route('admin.kategori')->withSuccess('Berhasil Ubah Kategori');
     }
 
     public function hapusKategori(Request $request)
     {
         $cat = Kriteria::find($request->id);
         $cat->delete();
-        return redirect()->intended(route('admin.kategori'))->withSuccess('Berhasil Hapus Kategori');
+        return redirect()->route('admin.kategori')->withSuccess('Berhasil Hapus Kategori');
     }
 }

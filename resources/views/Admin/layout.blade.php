@@ -88,7 +88,7 @@
             </a>
           </li> --}}
         </ul>
-
+        @if (auth()->user()->jabatan !== 'kepala_yayasan')
         <!-- Divider -->
         <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
@@ -97,14 +97,14 @@
         </h6>
         <!-- Navigation -->
         <ul>
-          @if (auth()->user()->jabatan === 'kepala_sekolah')
+          
             <li class="items-center">
               <a href="{{ route('admin.kepalaSekolah.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
                 <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
                 AHP
               </a>
             </li>
-          @endif
+          
 
           <li class="items-center">
             <a href="{{ route('admin.kepalaSekolah.ahp.perbandingan') }}"
@@ -113,7 +113,6 @@
               AHP Perbandingan
             </a>
           </li>
-
           <li class="items-center">
             <a href="{{ route('admin.kepalaSekolah.topsis') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
@@ -121,7 +120,8 @@
             </a>
           </li>
         </ul>
-
+        @endif
+        @if (auth()->user()->jabatan !== 'kepala_sekolah')
         <!-- Divider -->
         <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
@@ -130,14 +130,13 @@
         </h6>
         <!-- Navigation -->
         <ul>
-          @if (auth()->user()->jabatan === 'kepala_yayasan')
+          
             <li class="items-center">
               <a href="{{ route('admin.kepalaYayasan.ahp') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
                 <i class="mr-2 text-sm fas fa-table text-slate-500"></i>
                 AHP
               </a>
             </li>
-          @endif
           <li class="items-center">
             <a href="{{ route('admin.kepalaYayasan.ahp.perbandingan') }}"
               class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
@@ -152,7 +151,9 @@
             </a>
           </li>
         </ul>
+        @endif
 
+        @if (auth()->user()->jabatan === 'admin')
         <hr class="my-4 md:min-w-full" />
 
         <h6 class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-slate-500">
@@ -168,6 +169,7 @@
             </a>
           </li>
         </ul>
+        @endif
 
 
         <hr class="my-4 md:min-w-full" />

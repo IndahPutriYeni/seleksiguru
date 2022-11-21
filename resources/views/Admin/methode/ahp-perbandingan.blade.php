@@ -14,7 +14,7 @@
           <th class="w-64 text-sky-800">Kepribadian</th>
           <th class="w-64 text-sky-800">Mengajar</th>
           <th class="w-64 text-sky-800">Jumlah</th>
-          <th class="w-64 text-sky-800">Rata-rata</th>
+          <th class="w-64 text-sky-800">Bobot</th>
         </tr class="border-b">
       </thead>
       <tbody>

@@ -15,7 +15,8 @@ class Kriteria extends Model
         'name',
         'kode',
         'atribut',
-        'bobot'
+        'bobot',
+        'tipe',
     ];
 
     public $timestamps = false;

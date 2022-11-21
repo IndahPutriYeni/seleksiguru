@@ -14,16 +14,22 @@ class GuruController extends Controller
     public function nilaiGuruKepsek(){
         $guru = User::where('jabatan', 'calon_guru')->get();
         $guruCount = User::where('jabatan', 'calon_guru')->count();
-        $kriteria = Kriteria::all();
-        $countKriteria = Kriteria::all()->count();
+        $kriteria = Kriteria::where('tipe', 'kepala_sekolah')
+            ->get();
+        $countKriteria = Kriteria::where('tipe', 'kepala_sekolah')
+            ->get()
+            ->count();
         return view('Admin.guru.kepsek', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
     }
 
     public function nilaiGuruYayasan(){
         $guru = User::where('jabatan', 'calon_guru')->get();
         $guruCount = User::where('jabatan', 'calon_guru')->count();
-        $kriteria = Kriteria::all();
-        $countKriteria = Kriteria::all()->count();
+        $kriteria = Kriteria::where('tipe', 'kepala_yayasan')
+            ->get();
+        $countKriteria = Kriteria::where('tipe', 'kepala_yayasan')
+            ->get()
+            ->count();
         return view('Admin.guru.yayasan', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
     }
 
@@ -39,7 +45,8 @@ class GuruController extends Controller
 
     public function addNilai(Request $request)
     {
-        $kriteria = Kriteria::all();
+        $kriteria = Kriteria::where('tipe', auth()->user()->jabatan)
+            ->get();
 
         foreach($kriteria as $cat){
             $nilai = NilaiAlternatif::where('calon_guru_id', $request->id)
@@ -57,9 +64,10 @@ class GuruController extends Controller
             }else{
                 NilaiAlternatif::updateOrCreate([
                     'calon_guru_id' => $request->id,
-                    'penilai_id' => auth()->user()->id,
                     'kriteria_id' => $cat->id,
                     'jabatan'=> auth()->user()->jabatan,
+                    'penilai_id' => auth()->user()->id,
+                ], [
                     'nilai' =>  $request->input($cat->id),
                 ]);
             }

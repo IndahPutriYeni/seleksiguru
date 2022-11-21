@@ -5,6 +5,7 @@ namespace App\Http\Controllers\KepalaSekolah;
 use App\Http\Controllers\Controller;
 use App\Models\NilaiKriteria;
 use App\Models\NilaiPerbandingan;
+use App\Models\Kriteria;
 use App\Services\AhpService;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,7 @@ class AhpController extends Controller
 
     public function ahpProcess(Request $request)
     {
+        $user = auth()->user();
         $data = AhpService::processKepalaSekolah($request);
 
         foreach ($data as $kode => $nilai) {
@@ -79,6 +81,26 @@ class AhpController extends Controller
             'ci' => $result['ci'],
             'cr' => $result['cr'],
         ]);
+
+        // update bobot kriteria
+        foreach ($result['rataEigen'] as $key => $value) {
+            $kriteria = Kriteria::whereRaw('LOWER(name) = ?', [$key])
+                ->where('tipe', $user->jabatan)
+                ->first();
+
+            if ($kriteria) {
+                $kriteria->update(['bobot' => $value]);
+            } else {
+                $count = Kriteria::all()->count();
+
+                Kriteria::create([
+                    'name' => $key,
+                    'tipe' => $user->jabatan,
+                    'kode' => 'C' . $count,
+                    'bobot' => $value,
+                ]);
+            }
+        }
 
         return redirect()->route('admin.kepalaSekolah.ahp.perbandingan');
     }
