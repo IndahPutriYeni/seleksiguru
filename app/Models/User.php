@@ -70,8 +70,6 @@ class User extends Authenticatable
 
         static::deleting(function($user) { // before delete() method call this
              $user->nilai_guru()->delete();
-             $user->nilai_penilai()->delete();
-             $user->penilai()->delete();
              $user->calon_guru()->delete();
         });
     }
