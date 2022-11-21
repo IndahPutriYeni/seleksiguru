@@ -25,13 +25,10 @@ class Kriteria extends Model
     {
         return $this->hasMany(NilaiAlternatif::class, 'kriteria_id');
     }
-
-    public function nilai_kriteria_a()
-    {
-        return $this->hasMany(NilaiKriteria::class, 'kriteria_id_a');
-    }
-    public function nilai_kriteria_b()
-    {
-        return $this->hasMany(NilaiKriteria::class, 'kriteria_id_b');
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($nilai) { 
+             $nilai->nilai_alternatif()->delete();
+        });
     }
 }

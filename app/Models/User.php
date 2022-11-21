@@ -64,4 +64,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(NilaiAlternatif::class, 'calon_guru_id');
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->nilai_guru()->delete();
+             $user->nilai_penilai()->delete();
+             $user->penilai()->delete();
+             $user->calon_guru()->delete();
+        });
+    }
 }

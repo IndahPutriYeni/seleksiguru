@@ -18,7 +18,7 @@ class AdminController extends Controller
     {
         $countUser = User::where('jabatan', 'kepala_sekolah')->orWhere('jabatan', 'kepala_yayasan')->count();
         $countGuru = CalonGuru::all()->count();
-        $dataGuru = CalonGuru::all();
+        $dataGuru = CalonGuru::paginate(5);
         $countKriteria = Kriteria::all()->count();
         $countNilai = NilaiAlternatif::distinct('calon_guru_id')->count();
         return view('Admin.index', compact('countUser', 'countGuru', 'countKriteria', 'countNilai', 'dataGuru'));
@@ -27,7 +27,7 @@ class AdminController extends Controller
     public function user()
     {
         $user = User::where('isAdmin', 1)
-            ->get();
+            ->paginate(5);
         return view('Admin.user.index', compact('user'));
     }
 
