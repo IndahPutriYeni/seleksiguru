@@ -156,6 +156,7 @@
             @endforeach
           </tbody>
         </table>
+        {{ $dataGuru->links() }}
       </div>
     </div>
   </div>

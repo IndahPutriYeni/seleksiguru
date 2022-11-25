@@ -15,6 +15,8 @@
                 </h3>
               </div>
               <div class="flex flex-wrap">
+                <a href="{{ route('admin.addUser') }}"
+                  class="px-4 py-2 mr-10 text-white bg-indigo-500 rounded hover:bg-indigo-700">Tambah Calon Guru</a>
                 <a href="{{ route('admin.guru.kepsep') }}"
                   class="px-4 py-2 mr-10 text-white bg-indigo-500 rounded hover:bg-indigo-700">Nilai Kepala Sekolah</a>
                 <a href="{{ route('admin.guru.yayasan') }}"

@@ -45,7 +45,12 @@ class AdminController extends Controller
             'password' => ['required', Password::min(8)],
             'jabatan' => 'required',
         ]);
-        User::create([
+        if($request->jabatan !== 'calon_guru'){
+            $isAdmin = 1;
+        }else{
+            $isAdmin = 0;
+        }
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'email_verified_at' => Carbon::now(),
@@ -53,7 +58,13 @@ class AdminController extends Controller
             'jabatan' => $request->jabatan,
             'isAdmin' => $isAdmin,
         ]);
-        return redirect(route('admin.user'))->withSuccess('Berhasil Tambah User');
+        if(!$isAdmin){
+            CalonGuru::create([
+                'id' => $user->id
+            ]);
+            return redirect(route('admin.guru.index'))->withSuccess('Berhasil Tambah Calon Guru');
+        }
+        return redirect(route('admin.user'))->withSuccess('Berhasil Tambah User Admin');
     }
 
     public function editUser(Request $request)
