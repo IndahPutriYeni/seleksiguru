@@ -209,8 +209,7 @@
 
     Toast.fire({
       icon: 'error',
-      title: '{{ session()->get('
-      error ') }}'
+      title: "{{ session()->get('error') }}"
     })
   </script>
   @endif
@@ -230,8 +229,7 @@
 
     Toast.fire({
       icon: 'success',
-      title: '{{ session()->get('
-      success ') }}'
+      title: "{{ session()->get('success') }}"
     })
   </script>
   @endif
