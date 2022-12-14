@@ -13,11 +13,11 @@ class CalonGuru extends Model
     protected $table = 'calon_guru';
     protected $fillable = [
         'id',
-        'nik', 
+        'nik',
         'no_kk',
         'alamat',
         'tempat_lahir',
-        'tanggal_lahir', 
+        'tanggal_lahir',
         'tamatan',
         'instansi',
         'no_hp',
@@ -36,11 +36,12 @@ class CalonGuru extends Model
         return $this->hasMany(SuratMenyurat::class, 'user_id', 'id');
     }
 
-    
-    public static function boot() {
+
+    public static function boot()
+    {
         parent::boot();
-        static::deleting(function($user) { 
-             $user->surat_menyurat()->delete();
+        static::deleting(function ($user) {
+            $user->surat_menyurat()->delete();
         });
     }
 }

@@ -10,8 +10,8 @@ use App\Models\NilaiAlternatif;
 
 class GuruController extends Controller
 {
-    //
-    public function nilaiGuruKepsek(){
+    public function nilaiGuruKepsek()
+    {
         $guru = User::where('jabatan', 'calon_guru')->get();
         $guruCount = User::where('jabatan', 'calon_guru')->count();
         $kriteria = Kriteria::where('tipe', 'kepala_sekolah')
@@ -22,7 +22,8 @@ class GuruController extends Controller
         return view('Admin.guru.kepsek', compact('guru', 'guruCount', 'kriteria', 'countKriteria'));
     }
 
-    public function nilaiGuruYayasan(){
+    public function nilaiGuruYayasan()
+    {
         $guru = User::where('jabatan', 'calon_guru')->get();
         $guruCount = User::where('jabatan', 'calon_guru')->count();
         $kriteria = Kriteria::where('tipe', 'kepala_yayasan')
@@ -48,46 +49,45 @@ class GuruController extends Controller
         $kriteria = Kriteria::where('tipe', auth()->user()->jabatan)
             ->get();
 
-        foreach($kriteria as $cat){
+        foreach ($kriteria as $cat) {
             $nilai = NilaiAlternatif::where('calon_guru_id', $request->id)
-            ->where('kriteria_id', $cat->id)
-            ->where('jabatan', auth()->user()->jabatan)
-            ->first();
+                ->where('kriteria_id', $cat->id)
+                ->where('jabatan', auth()->user()->jabatan)
+                ->first();
             // dd($nilai);
-            if($nilai){
+            if ($nilai) {
                 $nilai->calon_guru_id = $request->id;
                 $nilai->penilai_id = auth()->user()->id;
                 $nilai->kriteria_id = $cat->id;
                 $nilai->jabatan = auth()->user()->jabatan;
                 $nilai->nilai = $request->input($cat->id);
                 $nilai->save();
-            }else{
+            } else {
                 NilaiAlternatif::updateOrCreate([
                     'calon_guru_id' => $request->id,
                     'kriteria_id' => $cat->id,
-                    'jabatan'=> auth()->user()->jabatan,
+                    'jabatan' => auth()->user()->jabatan,
                     'penilai_id' => auth()->user()->id,
                 ], [
                     'nilai' =>  $request->input($cat->id),
                 ]);
             }
         }
-        if(auth()->user()->jabatan == 'kepala_sekolah'){
+        if (auth()->user()->jabatan == 'kepala_sekolah') {
             return \redirect(route('admin.guru.kepsep'))->withSuccess('Berhasil Mengubah nilai guru');
-        }else if(auth()->user()->jabatan == 'kepala_yayasan')
-        {
+        } else if (auth()->user()->jabatan == 'kepala_yayasan') {
             return \redirect(route('admin.guru.yayasan'))->withSuccess('Berhasil Mengubah nilai guru');
         }
-        
     }
 
-    public function hapusGuru(Request $req){
+    public function hapusGuru(Request $req)
+    {
         $id = $req->id;
         $guru = User::find($id);
-        if($guru->delete()){
-            return redirect(route('admin.guru.index'))->withSuccess('Berhasil hapus '. $guru->name);
-        }else{
-            return reirect(route('admin.guru.index'))->with('error', 'Gagal menghapus guru terseut');
+        if ($guru->delete()) {
+            return redirect(route('admin.guru.index'))->withSuccess('Berhasil hapus ' . $guru->name);
+        } else {
+            return redirect(route('admin.guru.index'))->with('error', 'Gagal menghapus guru terseut');
         }
     }
 }

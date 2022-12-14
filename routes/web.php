@@ -9,6 +9,7 @@ use App\Http\Controllers\KepalaSekolah\AhpController as KSAhpController;
 use App\Http\Controllers\KepalaSekolah\TopsisController as KSTopsisController;
 use App\Http\Controllers\KepalaYayasan\AhpController as KYAhpController;
 use App\Http\Controllers\KepalaYayasan\TopsisController as KYTopsisController;
+use App\Http\Controllers\SeleksiGuruController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/register', [LoginController::class, 'registerPost']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'guru'])->controller(CalonGuruController::class)->group(function () {
     Route::get('/profile', 'profile')->name('profile');
@@ -68,6 +69,12 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
         Route::delete('guru/{id}', 'hapusGuru')->name('guru.delete');
     });
 
+    Route::controller(SeleksiGuruController::class)->group(function () {
+        Route::get('seleksi-guru', 'listGuru')->name('seleksiGuru.index');
+        Route::get('seleksi-guru/create', 'create')->name('seleksiGuru.create');
+        Route::post('seleksi-guru/create', 'store')->name('seleksiGuru.store');
+    });
+
     Route::prefix('kepala-sekolah')
         ->as('kepalaSekolah.')
         ->group(function () {
@@ -100,7 +107,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
                 });
         });
 
-    Route:: as ('copeland-score.')
+    Route::as('copeland-score.')
         ->group(function () {
             Route::get('copeland-score', [CopelandScoreController::class, 'index'])
                 ->name('index');
