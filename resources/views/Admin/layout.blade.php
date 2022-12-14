@@ -51,12 +51,14 @@
             </a>
           </li>
 
+          @if (auth()->user()->jabatan === 'admin')
           <li class="items-center">
             <a href="{{ route('admin.seleksiGuru.index') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-pink-600">
               <i class="mr-2 text-sm opacity-75 fas fa-user"></i>
               List Guru
             </a>
           </li>
+          @endif
 
           <li class="items-center">
             <a href="{{ route('admin.kategori') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">

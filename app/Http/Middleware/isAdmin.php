@@ -17,9 +17,13 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->isAdmin){
-            return $next($request);
-        }
-        return redirect(route('index'))->withError('Anda bukan admin');
+        // $user = Auth::user();
+        // if ($user->jabatan === 'admin') {
+        //     return $next($request);
+        // }
+
+        // abort(403);
+
+        return $next($request);
     }
 }
