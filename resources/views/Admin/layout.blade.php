@@ -13,7 +13,7 @@
 
 <body class="flex antialiased">
   <nav class="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
-    <div class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap">
+    <div class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap h-screen">
       <button class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden" type="button" onclick="toggleNavbar('example-collapse-sidebar')">
         <i class="fas fa-bars"></i>
       </button>
@@ -192,7 +192,7 @@
     </div>
   </nav>
 
-  <div class="w-full">
+  <div class="w-full bg-gray-100 p-8">
     @yield('content')
   </div>
   @if (session()->has('error'))
