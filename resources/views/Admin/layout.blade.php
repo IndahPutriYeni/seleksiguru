@@ -67,12 +67,14 @@
             </a>
           </li>
 
+          @if(auth()->user()->jabatan === 'admin')
           <li class="items-center">
             <a href="{{ route('admin.user') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">
               <i class="mr-2 text-sm fas fa-users text-slate-500"></i>
               User
             </a>
           </li>
+          @endif
 
           {{-- <li class="items-center">
             <a href="{{ route('admin.topsis') }}" class="block py-3 text-xs font-bold uppercase text-slate-700 hover:text-slate-500">

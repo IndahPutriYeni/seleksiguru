@@ -31,11 +31,11 @@ class KategoriController extends Controller
             'atribut' => 'required'
         ]);
         Kriteria::create([
-            'name'=>$request->name, 
-            'kode'=> $request->kode, 
-            'atribut'=>$request->atribut,
+            'name' => $request->name,
+            'kode' => $request->kode,
+            'atribut' => $request->atribut,
             'tipe' => $user->jabatan,
-            'bobot'=>0,
+            'bobot' => 0,
         ]);
         return redirect()->route('admin.kategori')->withSuccess('Berhasil Tambah Kategori');
     }
@@ -54,11 +54,12 @@ class KategoriController extends Controller
             'atribut' => 'required',
         ]);
 
+
         $kategori = Kriteria::find($request->id);
         $kategori->name = $request->name;
         $kategori->kode = $request->kode;
         $kategori->atribut = $request->atribut;
-        $kategori->jabatan = $request->jabatan;
+        //$kategori->tipe = $request->jabatan;
         $kategori->save();
         return redirect()->route('admin.kategori')->withSuccess('Berhasil Ubah Kategori');
     }

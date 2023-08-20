@@ -9,7 +9,7 @@
           Data User
         </h3>
       </div>
-      <a href="{{ route('admin.addKategori') }}" class="p-4 bg-indigo-500 text-white hover:bg-indigo-600 rounded">Add
+      <a href="{{ route('admin.addUser') }}" class="p-4 bg-indigo-500 text-white hover:bg-indigo-600 rounded">Add
         User</a>
 
     </div>

@@ -158,7 +158,7 @@
       <tr>
         <td class="px-2 py-4 border">{{ $loop->index + 1 }}</td>
         <td class="px-2 py-4 border">{{ $key }}</td>
-        <td class="px-2 py-4 border">{{ round($item, 2) }}</td>
+        <td class="px-2 py-4 border">{{ floor($item * 100) / 100 }}</td>
       </tr>
       @endforeach
     </tbody>

@@ -53,7 +53,7 @@
           <td class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
             {{ $guru->user->email }} | {{ $guru->no_hp }}
           </td>
-          <td class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+          <td>
             {{ $guru->alamat }}
           </td>
           <td class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
@@ -66,6 +66,7 @@
         </tr>
         @endforeach
       </tbody>
+
     </table>
     {{ $dataGuru->links() }}
   </div>

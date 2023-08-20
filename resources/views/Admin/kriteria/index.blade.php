@@ -58,13 +58,45 @@
               Edit
             </a>
 
-            <form method="POST" action="{{ route('admin.deleteKategori', $cat->id) }}">
+            <form id="deleteForm_{{ $cat->id }}" method="POST" action="{{ route('admin.deleteKategori', $cat->id) }}">
               @csrf
               @method('DELETE')
-              <button type="submit" class="px-4 py-2 text-indigo-500 hover:text-indigo-600">
+              <button type="button" class="px-4 py-2 text-indigo-500 hover:text-indigo-600" onclick="showDeleteModal('{{ $cat->id }}')">
                 Hapus
               </button>
             </form>
+
+            <!-- Modal -->
+            <div id="deleteModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <div class="bg-white p-6 rounded-lg">
+                <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                <div class="mt-4">
+                  <button class="px-4 py-2 bg-red-500 text-white rounded" onclick="deleteItem()">Ya, Hapus</button>
+                  <button class="px-4 py-2 bg-gray-300 rounded ml-2" onclick="hideDeleteModal()">Batal</button>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              let categoryIdToDelete = null;
+
+              function showDeleteModal(categoryId) {
+                categoryIdToDelete = categoryId;
+                document.getElementById('deleteModal').classList.remove('hidden');
+              }
+
+              function hideDeleteModal() {
+                categoryIdToDelete = null;
+                document.getElementById('deleteModal').classList.add('hidden');
+              }
+
+              function deleteItem() {
+                if (categoryIdToDelete !== null) {
+                  const deleteForm = document.getElementById('deleteForm_' + categoryIdToDelete);
+                  deleteForm.submit();
+                }
+              }
+            </script>
 
           </td>
         </tr>
